@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
-import './App.css';
-import { computed } from "mobx";
 import { observer } from 'mobx-react';
+import './App.css';
 //import { observer } from 'mobx';
 
 @observer(['Parameters'])
 class App extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     this.numOfDAysInAYear = 365;
     this.minNightsSoThatItIsNotSelfCustody = 2;
@@ -21,19 +20,27 @@ class App extends Component {
     if (!val) { // val = NaN
       val = 0;
     }
+    if (event.target.max !== null){
     if (val > event.target.max) {
       val = parseInt(event.target.max);
     }
-    
+  }
+
     switch (event.target.id) {
       case "childrenUnder6": this.props.Parameters.childrenUnder6 = val; break;
       case "childrenOver6": this.props.Parameters.childrenOver6 = val; break;
+      case "stayingFirstParent": this.props.Parameters.stayingFirstParent=val; break;
+      case "netSalaryFirstParent": this.props.Parameters.netSalaryFirstParent=val; break;
+      case "netSalarySecondParent": this.props.Parameters.netSalarySecondParent=val; break;
+     case "expensMadorOne":this.props.Parameters.expensMadorOne= val; break;
+     case "expensMadorTwo":this.props.Parameters.expensMadorTwo= val; break;
+   
     }
   }
 
   render() {
     return (
-      <div className="App">
+      <div className="thePage">
         <h3> נתונים קבועים </h3>
 
         <div> מספר ימים בשנה : {this.numOfDAysInAYear} </div>
@@ -60,7 +67,62 @@ class App extends Component {
         </div>
         <div> חלק הילדים במדור: % {this.props.Parameters.childrenMador}  </div>
         <hr />
+
+      <h3> נתוני הורים </h3>
+      <table border="1px solid black" className="table table-striped">
+        <tbody>
+          <tr>
+            <td>  </td>
+            <td> הורה א </td>
+            <td> הורה ב </td>
+          </tr>
+          <tr>
+            <td> שהות: </td>
+            <td>
+              <input id="stayingFirstParent" type="number" min={0} max={14} value={this.props.Parameters.stayingFirstParent} onChange={(event) => this.handleChangeChildrenNum(event)} />
+            </td>
+            <td> {this.props.Parameters.stayingSecondParent}  </td>
+          </tr>
+          <tr>
+            <td> הכנסה נטו מכל מקור: </td>
+            <td> <input id="netSalaryFirstParent" type="number" min={0} value={this.props.Parameters.netSalaryFirstParent} onChange={(event) => this.handleChangeChildrenNum(event)} /> </td>
+            <td> <input id="netSalarySecondParent" type="number" min={0} value={this.props.Parameters.netSalarySecondParent} onChange={(event) => this.handleChangeChildrenNum(event)} /> </td>
+          </tr>
+          <tr>
+            <td>  מדור (עלות) </td>
+            <td> <input id="expensMadorOne" type="number" min={0} value={this.props.Parameters.expensMadorOne} onChange={(event) => this.handleChangeChildrenNum(event)} /> </td>
+            <td> <input id="expensMadorTwo" type="number" min={0} value={this.props.Parameters.expensMadorTwo} onChange={(event) => this.handleChangeChildrenNum(event)} /> </td>
+            <td> מדור מינימלי : {this.props.Parameters.minMador} </td>
+          </tr>
+          <tr>
+            <td>  סה"כ הכנסות:</td>
+            <td> {this.state.totalSalaryFirstParentPercentage} % </td>
+            <td> {this.state.totalSalarySecondParentPercentage} % </td>
+          </tr>
+          {/* <tr>
+            <td> זמני שהות: </td>
+            <td>  {this.state.stayingPercentageFirstParent} % </td>
+            <td> {this.state.stayingPercentageSecondParent} %  </td>
+          </tr>
+          <tr>
+            <td>  שהות מחושבת: </td>
+            <td> {this.state.calculatedStayingPerFortnightFirstParent} </td>
+            <td>  {this.state.calculatedStayingPerFortnightSecondParent}  </td>
+          </tr>
+          <tr>
+            <td> ימים: </td>
+            <td> {this.state.calculatedDaysInYearFirstParent} </td>
+            <td> {this.state.calculatedDaysInYearSecondParent} </td>
+          </tr>
+          <tr>
+            <td>  שיפמן </td>
+            <td> {this.state.calcShifmanFirstPar} % </td>
+            <td> {this.state.calcShifmanSecondPar} % </td>
+          </tr> */}
+        </tbody>
+      </table>
       </div>
+
     );
   }
 }
