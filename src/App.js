@@ -96,8 +96,8 @@ class App extends Component {
           </tr>
           <tr>
             <td>  סה"כ הכנסות:</td>
-            <td> {this.state.totalSalaryFirstParentPercentage} % </td>
-            <td> {this.state.totalSalarySecondParentPercentage} % </td>
+            <td> {this.props.Parameters.totalSalaryFirstParentPercentage} % </td>
+            <td> {this.props.Parameters.totalSalarySecondParentPercentage} % </td>
           </tr>
           {/* <tr>
             <td> זמני שהות: </td>

@@ -35,7 +35,24 @@ class Parameters {
     @computed get minMador() {
        return  Math.min(this.expensMadorOne, this.expensMadorTwo);
     }
+    @computed get totalSalaryFirstParentPercentage (){
+        let totalSalary= this.netSalaryFirstParent+this.netSalarySecondParent;
+        if(totalSalary==0)
+        return 0;
+        else{
+            return this.netSalaryFirstParent*100/totalSalary;
+        }
+    }
+    @computed get totalSalarySecondParentPercentage (){
+        let totalSalary= this.netSalaryFirstParent+this.netSalarySecondParent;
+        if(totalSalary==0)
+        return 0;
+        else{
+            return this.netSalarySecondParent*100/totalSalary;
+        }
+    }
     
+
 
 
     
