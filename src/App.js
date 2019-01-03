@@ -20,7 +20,8 @@ class App extends Component {
     if (!val) { // val = NaN
       val = 0;
     }
-    if (event.target.max !== null){
+    if (event.target.max) // if max exists
+    {
     if (val > event.target.max) {
       val = parseInt(event.target.max);
     }
@@ -103,18 +104,18 @@ class App extends Component {
             <td> זמני שהות: </td>
             <td>  {this.state.stayingPercentageFirstParent} % </td>
             <td> {this.state.stayingPercentageSecondParent} %  </td>
-          </tr>
-          <tr>
+          </tr> */}
+          {/* <tr>
             <td>  שהות מחושבת: </td>
             <td> {this.state.calculatedStayingPerFortnightFirstParent} </td>
             <td>  {this.state.calculatedStayingPerFortnightSecondParent}  </td>
-          </tr>
-          <tr>
+          </tr> */}
+          {/* <tr>
             <td> ימים: </td>
             <td> {this.state.calculatedDaysInYearFirstParent} </td>
             <td> {this.state.calculatedDaysInYearSecondParent} </td>
-          </tr>
-          <tr>
+          </tr> */}
+          {/* <tr>
             <td>  שיפמן </td>
             <td> {this.state.calcShifmanFirstPar} % </td>
             <td> {this.state.calcShifmanSecondPar} % </td>
