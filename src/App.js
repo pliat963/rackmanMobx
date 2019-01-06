@@ -100,32 +100,30 @@ class App extends Component {
             <td> {this.props.Parameters.totalSalaryFirstParentPercentage} % </td>
             <td> {this.props.Parameters.totalSalarySecondParentPercentage} % </td>
           </tr>
-          {/* <tr>
+          <tr>
             <td> זמני שהות: </td>
-            <td>  {this.state.stayingPercentageFirstParent} % </td>
-            <td> {this.state.stayingPercentageSecondParent} %  </td>
-          </tr> */}
-          {/* <tr>
+            <td>  {this.props.Parameters.stayingPercentageFirstParent} % </td>
+            <td> {this.props.Parameters.stayingPercentageSecondParent} %  </td>
+          </tr>
+          <tr>
             <td>  שהות מחושבת: </td>
-            <td> {this.state.calculatedStayingPerFortnightFirstParent} </td>
-            <td>  {this.state.calculatedStayingPerFortnightSecondParent}  </td>
-          </tr> */}
-          {/* <tr>
+            <td> {this.props.Parameters.calculatedStayingPerFortnightFirstParent} </td>
+            <td>  {this.props.Parameters.calculatedStayingPerFortnightSecondParent}  </td>
+          </tr>
+          <tr>
             <td> ימים: </td>
-            <td> {this.state.calculatedDaysInYearFirstParent} </td>
-            <td> {this.state.calculatedDaysInYearSecondParent} </td>
-          </tr> */}
-          {/* <tr>
+            <td> {this.props.Parameters.calculatedDaysInYearFirstParent} </td>
+            <td> {this.props.Parameters.calculatedDaysInYearSecondParent} </td>
+          </tr>
+          <tr>
             <td>  שיפמן </td>
-            <td> {this.state.calcShifmanFirstPar} % </td>
-            <td> {this.state.calcShifmanSecondPar} % </td>
-          </tr> */}
+            <td> {this.props.Parameters.calcShifmanFirstPar} % </td>
+            <td> {this.props.Parameters.calcShifmanSecondPar} % </td>
+          </tr>
         </tbody>
       </table>
       </div>
-
     );
   }
 }
-
 export default App;
