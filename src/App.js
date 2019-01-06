@@ -5,15 +5,15 @@ import './App.css';
 
 @observer(['Parameters'])
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.numOfDAysInAYear = 365;
-    this.minNightsSoThatItIsNotSelfCustody = 2;
-    this.maxNightDiffForJointCustody = 4;
-    this.minSumForLivingToThePayer = 4000;
-    this.sumForKidUnder6 = 1300;
-    this.percentageFromFatherInJointCustody = 40;
-  }
+  // constructor(props) {
+  //   super(props);
+  //   this.numOfDAysInAYear = 365;
+  //   this.minNightsSoThatItIsNotSelfCustody = 2;
+  //   this.maxNightDiffForJointCustody = 4;
+  //   this.minSumForLivingToThePayer = 4000;
+  //   this.sumForKidUnder6 = 1300;
+  //   this.percentageFromFatherInJointCustody = 40;
+  // }
 
   handleChangeChildrenNum = (event) => {
     let val = parseInt(event.target.value);
@@ -40,6 +40,8 @@ class App extends Component {
   }
 
   render() {
+    // this.props.Parameters.calculatedStayingPerFortnightSecendParentVar=14-this.props.Parameters.calculatedStayingPerFortnightFirstParent;
+    // console.log(this.props.Parameters.calculatedStayingPerFortnightSecendParentVar+'nvn nvck')
     return (
       <div className="thePage">
         <h3> נתונים קבועים </h3>
@@ -102,18 +104,22 @@ class App extends Component {
           </tr>
           {/* <tr>
             <td> זמני שהות: </td>
-            <td>  {this.state.stayingPercentageFirstParent} % </td>
+            <td>  {this.props.props.Parameters.stayingPercentageFirstParent} % </td>
             <td> {this.state.stayingPercentageSecondParent} %  </td>
           </tr> */}
-          {/* <tr>
+          <tr>
             <td>  שהות מחושבת: </td>
-            <td> {this.state.calculatedStayingPerFortnightFirstParent} </td>
-            <td>  {this.state.calculatedStayingPerFortnightSecondParent}  </td>
-          </tr> */}
+            
+            <td> {this.props.Parameters.calculatedStayingPerFortnightFirstParent} </td>
+            
+            <td>  {this.props.Parameters.calculatedStayingPerFortnightSecendParent}  </td>
+            {/* */}
+          </tr>
+          
           {/* <tr>
             <td> ימים: </td>
-            <td> {this.state.calculatedDaysInYearFirstParent} </td>
-            <td> {this.state.calculatedDaysInYearSecondParent} </td>
+            <td> {this.props.Parameters.calculatedDaysInYearFirstParent('mom')} </td>
+            <td> {this.props.Parameters.calculatedDaysInYearSecondParent} </td>
           </tr> */}
           {/* <tr>
             <td>  שיפמן </td>
