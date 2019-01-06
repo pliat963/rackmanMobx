@@ -118,13 +118,13 @@ class Parameters {
 
 @computed get calcShifmanFirstPar () {
     let calcShifmanFirstPar;
-    calcShifmanFirstPar = this.totalSalaryFirstParentPercentage - this.stayingFirstParent;
+    calcShifmanFirstPar = this.totalSalaryFirstParentPercentage - this.stayingPercentageFirstParent;
     return calcShifmanFirstPar;
   }
 
   @computed get calcShifmanSecondPar () {
     let calcShifmanSecondPar;
-    calcShifmanSecondPar = this.totalSalarySecondParentPercentage - this.stayingSecondParent;
+    calcShifmanSecondPar = this.totalSalarySecondParentPercentage - this.stayingPercentageSecondParent;
     return calcShifmanSecondPar;
   }
      //things to calculate and not show

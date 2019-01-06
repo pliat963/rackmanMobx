@@ -116,7 +116,7 @@ class App extends Component {
             <td> {this.props.Parameters.calculatedDaysInYearSecondParent} </td>
           </tr>
           <tr>
-            <td>  שיפמן </td>
+            <td>שיפמן:  </td>
             <td> {this.props.Parameters.calcShifmanFirstPar} % </td>
             <td> {this.props.Parameters.calcShifmanSecondPar} % </td>
           </tr>
