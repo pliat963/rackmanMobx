@@ -69,61 +69,61 @@ class App extends Component {
  <div> חלק הילדים במדור: % {this.props.Parameters.childrenMador} </div>
  <hr />
 
- <h3> נתוני הורים </h3>
- <table border="1px solid black" className="table table-striped">
- <tbody>
- <tr>
- <td> </td>
- <td> הורה א </td>
- <td> הורה ב </td>
- </tr>
- <tr>
- <td> שהות: </td>
- <td>
- <input id="stayingFirstParent" type="number" min={0} max={14} value={this.props.Parameters.stayingFirstParent} onChange={(event) => this.handleChangeChildrenNum(event)} />
- </td>
- <td> {this.props.Parameters.stayingSecondParent} </td>
- </tr>
- <tr>
- <td> הכנסה נטו מכל מקור: </td>
- <td> <input id="netSalaryFirstParent" type="number" min={0} value={this.props.Parameters.netSalaryFirstParent} onChange={(event) => this.handleChangeChildrenNum(event)} /> </td>
- <td> <input id="netSalarySecondParent" type="number" min={0} value={this.props.Parameters.netSalarySecondParent} onChange={(event) => this.handleChangeChildrenNum(event)} /> </td>
- </tr>
- <tr>
- <td> מדור (עלות) </td>
- <td> <input id="expensMadorOne" type="number" min={0} value={this.props.Parameters.expensMadorOne} onChange={(event) => this.handleChangeChildrenNum(event)} /> </td>
- <td> <input id="expensMadorTwo" type="number" min={0} value={this.props.Parameters.expensMadorTwo} onChange={(event) => this.handleChangeChildrenNum(event)} /> </td>
- <td> מדור מינימלי : {this.props.Parameters.minMador} </td>
- </tr>
- <tr>
- <td> סה"כ הכנסות:</td>
- <td> {this.props.Parameters.totalSalaryFirstParentPercentage} % </td>
- <td> {this.props.Parameters.totalSalarySecondParentPercentage} % </td>
- </tr>
- <tr>
- <td> זמני שהות: </td>
- <td> {this.props.Parameters.stayingPercentageFirstParent} % </td>
- <td> {this.props.Parameters.stayingPercentageSecondParent} % </td>
- </tr>
- <tr>
- <td> שהות מחושבת: </td>
- <td> {this.props.Parameters.calculatedStayingPerFortnightFirstParent} </td>
- <td> {this.props.Parameters.calculatedStayingPerFortnightSecondParent} </td>
- </tr>
- <tr>
- <td> ימים: </td>
- <td> {this.props.Parameters.calculatedDaysInYearFirstParent} </td>
- <td> {this.props.Parameters.calculatedDaysInYearSecondParent} </td>
- </tr>
- <tr>
- <td>שיפמן: </td>
- <td> {this.props.Parameters.calcShifmanFirstPar} % </td>
- <td> {this.props.Parameters.calcShifmanSecondPar} % </td>
- </tr>
- </tbody>
- </table>
- </div>
- );
- }
+      <h3> נתוני הורים </h3>
+      <table border="1px solid black" className="table table-striped">
+        <tbody>
+          <tr>
+            <td>  </td>
+            <td> הורה א </td>
+            <td> הורה ב </td>
+          </tr>
+          <tr>
+            <td> שהות: </td>
+            <td>
+              <input id="stayingFirstParent" type="number" min={0} max={14} value={this.props.Parameters.stayingFirstParent} onChange={(event) => this.handleChangeChildrenNum(event)} />
+            </td>
+            <td> {this.props.Parameters.stayingSecondParent}  </td>
+          </tr>
+          <tr>
+            <td> הכנסה נטו מכל מקור: </td>
+            <td> <input id="netSalaryFirstParent" type="number" min={0} value={this.props.Parameters.netSalaryFirstParent} onChange={(event) => this.handleChangeChildrenNum(event)} /> </td>
+            <td> <input id="netSalarySecondParent" type="number" min={0} value={this.props.Parameters.netSalarySecondParent} onChange={(event) => this.handleChangeChildrenNum(event)} /> </td>
+          </tr>
+          <tr>
+            <td>  מדור (עלות) </td>
+            <td> <input id="expensMadorOne" type="number" min={0} value={this.props.Parameters.expensMadorOne} onChange={(event) => this.handleChangeChildrenNum(event)} /> </td>
+            <td> <input id="expensMadorTwo" type="number" min={0} value={this.props.Parameters.expensMadorTwo} onChange={(event) => this.handleChangeChildrenNum(event)} /> </td>
+            <td> מדור מינימלי : {this.props.Parameters.minMador} </td>
+          </tr>
+          <tr>
+            <td>  סה"כ הכנסות:</td>
+            <td> {this.props.Parameters.totalSalaryFirstParentPercentage} % </td>
+            <td> {this.props.Parameters.totalSalarySecondParentPercentage} % </td>
+          </tr>
+          <tr>
+            <td> זמני שהות: </td>
+            <td>  {this.props.Parameters.stayingPercentageFirstParent} % </td>
+            <td> {this.props.Parameters.stayingPercentageSecondParent} %  </td>
+          </tr>
+          <tr>
+            <td>  שהות מחושבת: </td>
+            <td> {this.props.Parameters.calculatedStayingPerFortnightFirstParent} </td>
+            <td>  {this.props.Parameters.calculatedStayingPerFortnightSecondParent}  </td>
+          </tr>
+          <tr>
+            <td> ימים: </td>
+            <td> {this.props.Parameters.calculatedDaysInYearFirstParent} </td>
+            <td> {this.props.Parameters.calculatedDaysInYearSecondParent} </td>
+          </tr>
+          <tr>
+            <td>שיפמן:  </td>
+            <td> {this.props.Parameters.calcShifmanFirstPar} % </td>
+            <td> {this.props.Parameters.calcShifmanSecondPar} % </td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+    );
+  }
 }
 export default App;
