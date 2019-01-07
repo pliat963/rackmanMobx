@@ -21,9 +21,10 @@ class Parameters {
 //things to calculate and not show
 @observable custodyKind = 0;
 
-
 //second table
-@observable expensChildrenOver6Val = 0;
+@observable expensesChildrenOver6StayingRegardless = 0;
+@observable unnecessaryExpensesChildrenUnder6 = 0;
+@observable treatmentSumSoleCustody = 0;
 
 //fitst table - parents data
 @computed get childrenMador(){
@@ -127,16 +128,16 @@ class Parameters {
     calcShifmanSecondPar = this.totalSalarySecondParentPercentage - this.stayingPercentageSecondParent;
     return calcShifmanSecondPar;
   }
+
+   //things to calculate and not show
    
   @computed get calcCustodyKind (){
     if (Math.abs(this.stayingFirstParent - this.stayingSecondParent) < this.maxNightDiffForJointCustody) {
         return 0;
-        
-      }
+        }
       else {
         if (this.stayingFirstParent > this.stayingSecondParent) {
-          return 1;
-         
+          return 1;         
         }
         else
           return 2;
@@ -160,13 +161,53 @@ class Parameters {
   }
 
 
-     //things to calculate and not show
-
-
-
-
      //second table
-   
+     @computed get expensesChildrenOver6StayingRegardlessFirstParent () {
+        let salaryPercFirst = this.totalSalaryFirstParentPercentage/100;
+        return this.expensesChildrenOver6StayingRegardless * salaryPercFirst;
+     }
+     @computed get expensesChildrenOver6StayingRegardlessSecondParent () {
+        let salaryPercSecond = this.totalSalarySecondParentPercentage/100;
+        return this.expensesChildrenOver6StayingRegardless * salaryPercSecond;
+    }
+
+    @computed get unnecessaryExpensesChildrenUnder6FirstParent () {
+        let salaryPercFirst = this.totalSalaryFirstParentPercentage/100;
+        return this.unnecessaryExpensesChildrenUnder6 * salaryPercFirst;
+    }
+    @computed get unnecessaryExpensesChildrenUnder6SecondParent () {
+        let salaryPercSecond = this.totalSalarySecondParentPercentage/100;
+        return this.unnecessaryExpensesChildrenUnder6 * salaryPercSecond;
+    }
+
+    @computed get treatmentSumSoleCustodyFirstPar () {
+        if (this.calcCustodyKind ==2) {
+            return this.treatmentSumSoleCustody;
+        } else {return 0;};
+    }
+    @computed get treatmentSumSoleCustodySecondPar () {
+        if (this.calcCustodyKind ==1) {
+            return this.treatmentSumSoleCustody;
+        } else {return 0;};
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     
