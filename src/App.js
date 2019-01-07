@@ -35,15 +35,24 @@ class App extends Component {
  case "netSalarySecondParent": this.props.Parameters.netSalarySecondParent=val; break;
  case "expensMadorOne":this.props.Parameters.expensMadorOne= val; break;
  case "expensMadorTwo":this.props.Parameters.expensMadorTwo= val; break;
- 
+ case "expensesChildrenOver6DependingOnStaying": this.props.Parameters.expensesChildrenOver6DependingOnStaying=val; break;
  }
  }
+ handleCangeCoordinatorParent = (event) => {
+ this.props.Parameters.coordinatorParent= event.target.value ;
+}
 
  render() {
  return (
  <div className="thePage">
  <h3> נתונים קבועים </h3>
-
+ <label>
+          <b> הורה מרכז: </b>
+          <select value={this.props.coordinatorParent} onChange={(event) => this.handleCangeCoordinatorParent(event)}>
+            <option value="mother"> אמא</option>
+            <option value="father"> אבא </option>
+          </select>
+        </label>    <br /><br />
  <div> מספר ימים בשנה : {this.numOfDAysInAYear} </div>
  <div> מינימום לילות שלא תהיה משמורת יחידה : {this.minNightsSoThatItIsNotSelfCustody} </div>
  <div> הפרש מקסימלי בין מספר לילות כדי שיהיה משמורת משותפת : {this.maxNightDiffForJointCustody}</div>
@@ -179,29 +188,30 @@ class App extends Component {
               <td> </td>
               <td> </td>
             </tr> */}
-            {/* <tr>
+            <tr>
               <td>צורכי ילדים מתחת 6 - הכרחיות - מחושב.  האב משלם (100% או 60%) </td>
-              <td> {this.state.nessesaryChildUnder6Needs}</td>
-              <td> {this.state.fatherNeedsToPayForKidsUnder6} </td>
+              <td> {this.props.Parameters.nessesaryChildUnder6Needs}</td>
+              <td> {this.props.Parameters.fatherNeedsToPayForKidsUnder6} </td>
               <td> 0 </td>
               <td>חובת האב </td>
-            </tr> */}
-            {/* <tr>
+            </tr>
+            <tr>
               <td>מדור  מתחת לגיל 6 - מחושב לפי מדור האם </td>
-              <td> {this.state.motherMadorUnder6}</td>
+             
+              <td> {this.props.Parameters.motherMadorUnder6ForFather}</td>
+              <td> {this.props.Parameters.motherMadorUnder6}</td>
               <td> </td>
-              <td> aaa</td>
               <td>חובת האב</td>
-            </tr> */}
+            </tr>
             {/* <tr>
 
             </tr> */}
-            {/* <tr>
+            <tr>
               <td>צרכי ילדים מעל גיל 6 - שהות - מחושב לפי נוסחת וועדת שיפמן </td>
-              <td> <input id="expensesChildrenOver6DependingOnStaying" type="number" min={0} value={this.state.motherMadorUnder6} onChange={(event) => this.handleChangeMotherMadorUnder6(event)} /></td>
-              <td> aaa</td>
-              <td>aaa </td>
-            </tr> */}
+              <td> <input id="expensesChildrenOver6DependingOnStaying" type="number" min={0} value={this.props.Parameters.expensesChildrenOver6DependingOnStaying} onChange={(event) => this.handleChangeChildrenNum(event)} /></td>
+              <td>{this.props.Parameters.expensesChildrenOver6DependingOnStayingForFather}</td>
+              <td>{this.props.Parameters.expensesChildrenOver6DependingOnStayingForMother} </td>
+            </tr>
             {/* <tr>
               <td>מדור מעל גיל 6: משמורת משותפת לעני - משמורת יחידה למשמורן </td>
               <td> aaa</td>
@@ -222,6 +232,8 @@ class App extends Component {
               <td> aaa</td>
               <td> aaa</td>
               <td>aaa </td>
+
+
             </tr>
             <tr> */}
               {/* <td>לפי החישוב (שיפמן) היחסי </td>

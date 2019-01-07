@@ -17,6 +17,9 @@ class Parameters {
 @observable netSalarySecondParent = 0;
 @observable expensMadorOne = 0;
 @observable expensMadorTwo = 0;
+@observable  coordinatorParent = '';
+ @observable  expensesChildrenOver6DependingOnStaying=0;
+ 
 
 //things to calculate and not show
 @observable custodyKind = 0;
@@ -127,7 +130,10 @@ class Parameters {
     calcShifmanSecondPar = this.totalSalarySecondParentPercentage - this.stayingPercentageSecondParent;
     return calcShifmanSecondPar;
   }
+
+  //things to calculate and not show
    
+  return
   @computed get calcCustodyKind (){
     if (Math.abs(this.stayingFirstParent - this.stayingSecondParent) < this.maxNightDiffForJointCustody) {
         return 0;
@@ -159,17 +165,42 @@ class Parameters {
   
   }
 
-
-     //things to calculate and not show
-
-
-
-
      //second table
    
+     @computed get nessesaryChildUnder6Needs  (){
+        return this.sumForKidUnder6*this.childrenUnder6;
+
+    }
+    @computed get fatherNeedsToPayForKidsUnder6 ()
+    {
+        if(this.calcCustodyKind===0)
+        return (1-this.percentageFromFatherInJointCustody)/100*this.nessesaryChildUnder6Needs;
+        else
+        return this.nessesaryChildUnder6Needs;
+    }
+    @computed get motherMadorUnder6 ()
+    {
+        if(this.childrenUnder6!= 0|| this.childrenOver6!=0)
+        return this.childrenMador/100*this.childrenUnder6/(this.childrenUnder6+this.childrenOver6)*this.expensMadorOne
+    }
+    @computed get motherMadorUnder6ForFather(){
+        if(this.calcCustodyKind===0)
+    return 0.5* this.motherMadorUnder6;
+else
+if(this.calcCustodyKind===1)
+return this.motherMadorUnder6;
+else
+return 0;
 
 
-    
+    }
+    @computed get expensesChildrenOver6DependingOnStayingForFather(){
+    return Math.max(0,this.expensesChildrenOver6DependingOnStaying*(this.totalSalarySecondParentPercentage-this.stayingPercentageSecondParent));
+}
+@computed get expensesChildrenOver6DependingOnStayingForMother(){
+    return Math.max(0,this.expensesChildrenOver6DependingOnStaying*(this.totalSalaryFirstParentPercentage-this.stayingPercentageFirstParent));
 }
 
+
+}
 export default new Parameters;
