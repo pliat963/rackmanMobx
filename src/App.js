@@ -122,6 +122,122 @@ class App extends Component {
           </tr>
         </tbody>
       </table>
+       {/* lalalala */}
+
+
+
+
+        <hr />
+        <h3> צורכי ילדים</h3>
+        <table border="1px solid black" className="table table-striped">
+          <tbody>
+            {/* <tr>
+              <td> יחס תשלום חריגות</td>
+              <td>  </td>
+              <td><div> {this.state.totalSalaryFirstParentPercentage} % </div> </td>
+              <td><div> {this.state.totalSalarySecondParentPercentage} % </div> </td>
+            </tr> */}
+            {/* <tr>
+              <td>צורכי ילדים </td>
+              <td> </td>
+              <td> האב</td>
+              <td> האם </td>
+              <td> מחושב לפי יחס</td>
+            </tr> */}
+            {/* <tr>
+              <td>מחושב לפי הכנסות</td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr> */}
+            {/* <tr>
+              <td>צורכי ילדים מעל גיל 6 - לא תלוי שהות (הולך למרכז) </td>
+              <td> <input id="expensesChildrenOver6StayingRegardless" type="number" min={0} value={this.state.expensChildrenOver6Val} onChange={(event) => this.handlechildrenExpenses(event)} /></td>
+              <td> {this.state.childrenNeedsOver6FirstParent}</td>
+              <td>{this.state.childrenNeedsOver6SecondParent} </td>
+              <td>הכנסות</td>
+            </tr> */}
+            {/* <tr>
+              <td>צורכי ילדים מתחת לגיל 6 - לא הכרחיות </td>
+              <td><input id="unnecessaryExpensesChildrenUnder6" type="number" min={0} value={this.state.expensChildOver6Val} onChange={(event) => this.handlechildrenExpenses(event)} /> </td>
+              <td>  {this.state.childrenNeedsUnder6FirstParent} </td>
+              <td>{this.state.childrenNeedsUnder6SecondParent}</td>
+              <td>הכנסות</td>
+            </tr> */}
+            {/* <tr>
+              <td>דמי טיפול Sole Custody  </td>
+              <td> <input id="treatmentSoleCustody" type="number" min={0} value={this.state.treatmentSoleCustody} onChange={(event) => this.handleChangeTreatmentSoleCustody(event)} /></td>
+              <td> {this.state.treatmentSoleCustodyFirstPar}</td>
+              <td> {this.state.treatmentSoleCustodySecondPar} </td>
+              <td>משמורן יחיד = מרכז</td>
+            </tr> */}
+            {/* <tr>
+              <td> </td>
+              <td> </td>
+              <td> </td>
+              <td> </td>
+            </tr> */}
+            {/* <tr>
+              <td>צורכי ילדים מתחת 6 - הכרחיות - מחושב.  האב משלם (100% או 60%) </td>
+              <td> {this.state.nessesaryChildUnder6Needs}</td>
+              <td> {this.state.fatherNeedsToPayForKidsUnder6} </td>
+              <td> 0 </td>
+              <td>חובת האב </td>
+            </tr> */}
+            {/* <tr>
+              <td>מדור  מתחת לגיל 6 - מחושב לפי מדור האם </td>
+              <td> {this.state.motherMadorUnder6}</td>
+              <td> </td>
+              <td> aaa</td>
+              <td>חובת האב</td>
+            </tr> */}
+            {/* <tr>
+
+            </tr> */}
+            {/* <tr>
+              <td>צרכי ילדים מעל גיל 6 - שהות - מחושב לפי נוסחת וועדת שיפמן </td>
+              <td> <input id="expensesChildrenOver6DependingOnStaying" type="number" min={0} value={this.state.motherMadorUnder6} onChange={(event) => this.handleChangeMotherMadorUnder6(event)} /></td>
+              <td> aaa</td>
+              <td>aaa </td>
+            </tr> */}
+            {/* <tr>
+              <td>מדור מעל גיל 6: משמורת משותפת לעני - משמורת יחידה למשמורן </td>
+              <td> aaa</td>
+              <td> aaa</td>
+              <td>aaa </td>
+            </tr> */}
+            {/* <tr>
+
+            </tr> */}
+            {/* <tr>
+              <td>ההורה הלא מרכז משלם את הוצאות הצד השני </td>
+              <td> aaa</td>
+              <td> aaa</td>
+              <td>aaa </td>
+            </tr> */}
+            {/* <tr>
+              <td>האב תמיד משלם </td>
+              <td> aaa</td>
+              <td> aaa</td>
+              <td>aaa </td>
+            </tr>
+            <tr> */}
+              {/* <td>לפי החישוב (שיפמן) היחסי </td>
+              <td> aaa</td>
+              <td> aaa</td>
+              <td>aaa </td>
+            </tr> */}
+            {/* <tr>
+              <td> סך הכל </td>
+              <td> aaa</td>
+              <td> aaa</td>
+              <td>aaa </td>
+            </tr> */}
+
+          </tbody>
+        </table>
+
+
       </div>
     );
   }
