@@ -127,6 +127,39 @@ class Parameters {
     calcShifmanSecondPar = this.totalSalarySecondParentPercentage - this.stayingPercentageSecondParent;
     return calcShifmanSecondPar;
   }
+   
+  @computed get calcCustodyKind (){
+    if (Math.abs(this.stayingFirstParent - this.stayingSecondParent) < this.maxNightDiffForJointCustody) {
+        return 0;
+        
+      }
+      else {
+        if (this.stayingFirstParent > this.stayingSecondParent) {
+          return 1;
+         
+        }
+        else
+          return 2;
+}
+  }
+  @computed get calcBeenResponPar ()
+  {
+    if (this.calcBeenCustody > 0) {
+        return this.calcBeenCustody;
+      }
+      else {
+        if (this.coordinatorParent === "mother") {
+          return 1;
+        }
+        else {
+          return  2;
+        }
+      }
+    
+  
+  }
+
+
      //things to calculate and not show
 
 
