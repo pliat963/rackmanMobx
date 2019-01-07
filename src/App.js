@@ -208,12 +208,12 @@ class App extends Component {
             {/* <tr>
 
             </tr> */}
-            {/* <tr>
+            <tr>
               <td>ההורה הלא מרכז משלם את הוצאות הצד השני </td>
               <td> aaa</td>
-              <td> aaa</td>
-              <td>aaa </td>
-            </tr> */}
+              <td> {this.props.Parameters.ifSecondParentIsCoordinatorThenFirstNeedsToPay}</td>
+              <td> {this.props.Parameters.ifFirstParentIsCoordinatorThenSecondNeedsToPay}</td>
+            </tr>
             {/* <tr>
               <td>האב תמיד משלם </td>
               <td> aaa</td>

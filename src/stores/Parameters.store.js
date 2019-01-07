@@ -136,17 +136,19 @@ class Parameters {
         return 0;
         }
       else {
+          //first parent
         if (this.stayingFirstParent > this.stayingSecondParent) {
           return 1;         
         }
+         //second parent
         else
           return 2;
 }
   }
-  @computed get calcBeenResponPar ()
+   @computed get calcBeenResponPar () //change to calcCoordinatorParent?
   {
-    if (this.calcBeenCustody > 0) {
-        return this.calcBeenCustody;
+    if (this.calcCustodyKind > 0) {
+        return this.calcCustodyKind;
       }
       else {
         if (this.coordinatorParent === "mother") {
@@ -189,6 +191,29 @@ class Parameters {
         if (this.calcCustodyKind ==1) {
             return this.treatmentSumSoleCustody;
         } else {return 0;};
+    }
+
+
+
+    //after the yellow
+
+    @computed get ifSecondParentIsCoordinatorThenFirstNeedsToPay() {
+        let sum = 0;
+        if (this.calcBeenResponPar == 2) {
+            sum = (this.expensesChildrenOver6StayingRegardlessSecondParent 
+                    + this.unnecessaryExpensesChildrenUnder6SecondParent
+                    + this.treatmentSumSoleCustodySecondPar);
+        } else {sum =0};
+        return sum;
+    }
+    @computed get ifFirstParentIsCoordinatorThenSecondNeedsToPay() {
+        let sum = 0;
+        if (this.calcBeenResponPar == 1) {
+            sum = (this.expensesChildrenOver6StayingRegardlessFirstParent 
+                    + this.unnecessaryExpensesChildrenUnder6FirstParent
+                    + this.treatmentSumSoleCustodyFirstPar);
+        } else {sum =0};
+        return sum;
     }
 
 
