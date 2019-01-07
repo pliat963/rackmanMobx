@@ -5,16 +5,7 @@ import './App.css';
 
 @observer(['Parameters'])
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.numOfDAysInAYear = 365;
-    this.minNightsSoThatItIsNotSelfCustody = 2;
-    this.maxNightDiffForJointCustody = 4;
-    this.minSumForLivingToThePayer = 4000;
-    this.sumForKidUnder6 = 1300;
-    this.percentageFromFatherInJointCustody = 40;
-  }
-
+  
   handleChangeChildrenNum = (event) => {
     let val = parseInt(event.target.value);
     if (!val) { // val = NaN
@@ -38,7 +29,12 @@ class App extends Component {
       case "expensesChildrenOver6StayingRegardless": this.props.Parameters.expensesChildrenOver6StayingRegardless = val; break;
       case "unnecessaryExpensesChildrenUnder6": this.props.Parameters.unnecessaryExpensesChildrenUnder6 = val; break;
       case "treatmentSumSoleCustody": this.props.Parameters.treatmentSumSoleCustody = val; break;
+      case "expensesChildrenOver6DependingOnStaying": this.props.Parameters.expensesChildrenOver6DependingOnStaying = val; break;
     }
+  }
+
+  handleCangeCoordinatorParent = (event) => {
+    this.props.Parameters.coordinatorParent = event.target.value;
   }
 
   render() {
@@ -46,13 +42,15 @@ class App extends Component {
       <div className="thePage">
         <h3> נתונים קבועים </h3>
 
-        <div> מספר ימים בשנה : {this.numOfDAysInAYear} </div>
-        <div> מינימום לילות שלא תהיה משמורת יחידה : {this.minNightsSoThatItIsNotSelfCustody} </div>
-        <div> הפרש מקסימלי בין מספר לילות כדי שיהיה משמורת משותפת : {this.maxNightDiffForJointCustody}</div>
-        <div> סכום מינימלי למחייה שנשאר להורה המשלם : {this.minSumForLivingToThePayer}</div>
-        <div> סכום לילד מתחת לגיל 6 : {this.sumForKidUnder6}</div>
-        <div> אחוזי ההורדה מהאב במקרה של משמורת משותפת : % {this.percentageFromFatherInJointCustody} </div>
+        <div> מספר ימים בשנה : {this.props.Parameters.numOfDaysInAYear} </div>
+        <div> מינימום לילות שלא תהיה משמורת יחידה : {this.props.Parameters.minNightsSoThatItIsNotSelfCustody} </div>
+        <div> הפרש מקסימלי בין מספר לילות כדי שיהיה משמורת משותפת : {this.props.Parameters.maxNightDiffForJointCustody}</div>
+        <div> סכום מינימלי למחייה שנשאר להורה המשלם : {this.props.Parameters.minSumForLivingToThePayer}</div>
+        <div> סכום לילד מתחת לגיל 6 : {this.props.Parameters.sumForKidUnder6}</div>
+        <div> אחוזי ההורדה מהאב במקרה של משמורת משותפת : % {this.props.Parameters.percentageFromFatherInJointCustody} </div>
         <hr />
+
+      
 
         <h3> מספר ילדים </h3>
         <div>
@@ -126,6 +124,14 @@ class App extends Component {
             </tr>
           </tbody>
         </table>
+
+          <label>
+          <b> הורה מרכז: </b>
+          <select value={this.props.Parameters.coordinatorParent} onChange={(event) => this.handleCangeCoordinatorParent(event)}>
+            <option value="mother"> אמא</option>
+            <option value="father"> אבא </option>
+          </select>
+        </label>    <hr />
         {/* lalalala */}
 
 
@@ -170,62 +176,64 @@ class App extends Component {
               <td> {this.props.Parameters.treatmentSumSoleCustodySecondPar} </td>
               <td>משמורן יחיד = מרכז</td>
             </tr>
-            {/* <tr>
+            <tr>
               <td> </td>
               <td> </td>
               <td> </td>
               <td> </td>
-            </tr> */}
-            {/* <tr>
+            </tr>
+            <tr>
               <td>צורכי ילדים מתחת 6 - הכרחיות - מחושב.  האב משלם (100% או 60%) </td>
-              <td> {this.state.nessesaryChildUnder6Needs}</td>
-              <td> {this.state.fatherNeedsToPayForKidsUnder6} </td>
+              <td> {this.props.Parameters.nessesaryChildUnder6Needs}</td>
+              <td> {this.props.Parameters.fatherNeedsToPayForKidsUnder6}  </td>
               <td> 0 </td>
               <td>חובת האב </td>
-            </tr> */}
-            {/* <tr>
+            </tr>
+            <tr>
               <td>מדור  מתחת לגיל 6 - מחושב לפי מדור האם </td>
-              <td> {this.state.motherMadorUnder6}</td>
+              <td> {this.props.Parameters.motherMadorUnder6}</td>
+              <td> {this.props.Parameters.motherMadorUnder6ForFather}</td>
               <td> </td>
-              <td> aaa</td>
               <td>חובת האב</td>
-            </tr> */}
-            {/* <tr>
+            </tr>
+            <tr>
 
-            </tr> */}
-            {/* <tr>
+            </tr>
+            <tr>
               <td>צרכי ילדים מעל גיל 6 - שהות - מחושב לפי נוסחת וועדת שיפמן </td>
-              <td> <input id="expensesChildrenOver6DependingOnStaying" type="number" min={0} value={this.state.motherMadorUnder6} onChange={(event) => this.handleChangeMotherMadorUnder6(event)} /></td>
-              <td> aaa</td>
-              <td>aaa </td>
-            </tr> */}
-            {/* <tr>
+              <td> <input id="expensesChildrenOver6DependingOnStaying" type="number" min={0} value={this.props.Parameters.expensesChildrenOver6DependingOnStaying} onChange={(event) => this.handleChangeChildrenNum(event)} /></td>
+              <td>{this.props.Parameters.expensesChildrenOver6DependingOnStayingForFather}</td>
+              <td>{this.props.Parameters.expensesChildrenOver6DependingOnStayingForMother} </td>
+              <td>שיפמן</td>
+            </tr>
+            <tr>
               <td>מדור מעל גיל 6: משמורת משותפת לעני - משמורת יחידה למשמורן </td>
-              <td> aaa</td>
-              <td> aaa</td>
-              <td>aaa </td>
-            </tr> */}
-            {/* <tr>
+              <td> {this.props.Parameters.madorOver6}</td>
+              <td> {this.props.Parameters.madorOver6Father}</td>
+              <td>{this.props.Parameters.madorOver6Mother} </td>
+              <td>שיפמן</td>
+            </tr>
+            <tr>
 
-            </tr> */}
+            </tr>
             <tr>
               <td>ההורה הלא מרכז משלם את הוצאות הצד השני </td>
-              <td> aaa</td>
+              <td> </td>
               <td> {this.props.Parameters.ifSecondParentIsCoordinatorThenFirstNeedsToPay}</td>
               <td> {this.props.Parameters.ifFirstParentIsCoordinatorThenSecondNeedsToPay}</td>
             </tr>
-            {/* <tr>
+            <tr>
               <td>האב תמיד משלם </td>
-              <td> aaa</td>
-              <td> aaa</td>
-              <td>aaa </td>
+              <td> </td>
+              <td> {this.props.Parameters.fatherAlwaysPays} </td>
+              <td> </td>
             </tr>
-            <tr> */}
-            {/* <td>לפי החישוב (שיפמן) היחסי </td>
-              <td> aaa</td>
-              <td> aaa</td>
-              <td>aaa </td>
-            </tr> */}
+            <tr>
+            <td>לפי החישוב (שיפמן) היחסי </td>
+              <td> aa</td>
+              <td>{this.props.Parameters.accordingToRelativeCalculationShifmanFather}</td>
+              <td> {this.props.Parameters.accordingToRelativeCalculationShifmanMother} </td>
+            </tr>
             {/* <tr>
               <td> סך הכל </td>
               <td> aaa</td>
