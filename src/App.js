@@ -119,11 +119,14 @@ class App extends Component {
             <td>שיפמן:  </td>
             <td> {this.props.Parameters.calcShifmanFirstPar} % </td>
             <td> {this.props.Parameters.calcShifmanSecondPar} % </td>
+            <td>{this.props.Parameters.calcCustodyKind}</td>
+            <td>{this.props.Parameters.calcBeenResponPar}</td>
           </tr>
         </tbody>
       </table>
       </div>
     );
+    
   }
 }
 export default App;
