@@ -12,11 +12,11 @@ class Parameters {
     //fitst table - parents data
     @observable childrenUnder6 = 0;
     @observable childrenOver6 = 0;
-    @observable stayingFirstParent = 0;
-    @observable netSalaryFirstParent = 0;
-    @observable netSalarySecondParent = 0;
-    @observable expensMadorOne = 0;
-    @observable expensMadorTwo = 0;
+    @observable stayingMother = 0;
+    @observable netSalaryMother = 0;
+    @observable netSalaryFather = 0;
+    @observable expensesMadorMother = 0;
+    @observable expensesMadorFather = 0;
     @observable coordinatorParent = '';
 
 
@@ -29,7 +29,7 @@ class Parameters {
     @observable expensesChildrenOver6DependingOnStaying = 0;
 
 
-    //fitst table - parents data
+   
     @computed get childrenMador() {
         let numOfChildren = this.childrenOver6 + this.childrenUnder6;
         if (numOfChildren !== 0) {
@@ -44,104 +44,102 @@ class Parameters {
                         return 0;
                     }
                 }
-
             }
-
         } else { return 0 }
     }
 
-    @computed get stayingSecondParent() {
-        return 14 - this.stayingFirstParent;
+     //fitst table - parents data
+
+    @computed get stayingFather() {
+        return 14 - this.stayingMother;
     }
 
     @computed get minMador() {
-        return Math.min(this.expensMadorOne, this.expensMadorTwo);
+        return Math.min(this.expensesMadorMother, this.expensesMadorFather);
     }
-    @computed get totalSalaryFirstParentPercentage() {
-        let totalSalary = this.netSalaryFirstParent + this.netSalarySecondParent;
+    @computed get totalSalaryMotherPercentage() {
+        let totalSalary = this.netSalaryMother + this.netSalaryFather;
         if (totalSalary == 0)
             return 0;
         else {
-            return this.netSalaryFirstParent * 100 / totalSalary;
+            return this.netSalaryMother * 100 / totalSalary;
         }
     }
-    @computed get totalSalarySecondParentPercentage() {
-        let totalSalary = this.netSalaryFirstParent + this.netSalarySecondParent;
+    @computed get totalSalaryFatherPercentage() {
+        let totalSalary = this.netSalaryMother + this.netSalaryFather;
         if (totalSalary == 0)
             return 0;
         else {
-            return this.netSalarySecondParent * 100 / totalSalary;
+            return this.netSalaryFather * 100 / totalSalary;
         }
     }
 
-    @computed get stayingPercentageFirstParent() {
-        let stayingPercentageFirstParent;
-        let calculatedDaysInYearFirstParent = this.calculatedDaysInYearFirstParent;
-        stayingPercentageFirstParent = calculatedDaysInYearFirstParent / this.numOfDAysInAYear * 100;
-        return stayingPercentageFirstParent;
+    @computed get stayingPercentageMother() {
+        let stayingPercentageMother = 0;
+        stayingPercentageMother = this.calculatedDaysInYearMother / this.numOfDAysInAYear * 100;
+        return stayingPercentageMother;
     }
 
-    @computed get stayingPercentageSecondParent() {
-        let stayingPercentageSecondParent;
-        let calculatedDaysInYearSecondParent = this.calculatedDaysInYearSecondParent;
-        stayingPercentageSecondParent = calculatedDaysInYearSecondParent / this.numOfDAysInAYear * 100;
-        return stayingPercentageSecondParent;
+    @computed get stayingPercentageFather() {
+        let stayingPercentageFather = 0;
+        stayingPercentageFather = this.calculatedDaysInYearFather / this.numOfDAysInAYear * 100;
+        return stayingPercentageFather;
     }
 
-    @computed get calculatedStayingPerFortnightFirstParent() {
-        if (this.stayingFirstParent > (13 - this.minNightsSoThatItIsNotSelfCustody)) {
+    @computed get calculatedStayingPerFortnightMother() {
+        if (this.stayingMother > (13 - this.minNightsSoThatItIsNotSelfCustody)) {
             return 14;
         }
         else {
-            if (this.stayingFirstParent < (1 + this.minNightsSoThatItIsNotSelfCustody)) {
+            if (this.stayingMother < (1 + this.minNightsSoThatItIsNotSelfCustody)) {
                 return 0;
             }
             else {
-                return this.stayingFirstParent;
+                return this.stayingMother;
             }
         }
     }
 
-    @computed get calculatedStayingPerFortnightSecondParent() {
-        return 14 - this.calculatedStayingPerFortnightFirstParent;
+    @computed get calculatedStayingPerFortnightFather() {
+        return 14 - this.calculatedStayingPerFortnightMother;
     }
 
-    @computed get calculatedDaysInYearFirstParent() {
-        let calculatedDaysInYearFirstParent;
-        let calculatedStayingPerFortnightFirstParent = this.calculatedStayingPerFortnightFirstParent;
-        calculatedDaysInYearFirstParent = calculatedStayingPerFortnightFirstParent / 14 * this.numOfDAysInAYear;
-        return calculatedDaysInYearFirstParent;
+    @computed get calculatedDaysInYearMother() {
+        let calculatedDaysInYearMother;
+        let calculatedStayingPerFortnightMother = this.calculatedStayingPerFortnightMother;
+        calculatedDaysInYearMother = calculatedStayingPerFortnightMother / 14 * this.numOfDAysInAYear;
+        return calculatedDaysInYearMother;
     }
 
-    @computed get calculatedDaysInYearSecondParent() {
-        let calculatedDaysInYearSecondParent;
-        let calculatedStayingPerFortnightSecondParent = this.calculatedStayingPerFortnightSecondParent;
-        calculatedDaysInYearSecondParent = calculatedStayingPerFortnightSecondParent / 14 * this.numOfDAysInAYear;
-        return calculatedDaysInYearSecondParent;
+    @computed get calculatedDaysInYearFather() {
+        let calculatedDaysInYearFather;
+        let calculatedStayingPerFortnightFather = this.calculatedStayingPerFortnightFather;
+        calculatedDaysInYearFather = calculatedStayingPerFortnightFather / 14 * this.numOfDAysInAYear;
+        return calculatedDaysInYearFather;
+    }
+//I think hese calcshifman are unneccesary
+    @computed get calcShifmanMother() {
+        let calcShifmanMother;
+        calcShifmanMother = this.totalSalaryMotherPercentage - this.stayingPercentageMother;
+        return calcShifmanMother;
     }
 
-    @computed get calcShifmanFirstPar() {
-        let calcShifmanFirstPar;
-        calcShifmanFirstPar = this.totalSalaryFirstParentPercentage - this.stayingPercentageFirstParent;
-        return calcShifmanFirstPar;
+    @computed get calcShifmanFather() {
+        let calcShifmanFather;
+        calcShifmanFather = this.totalSalaryFatherPercentage - this.stayingPercentageFather;
+        return calcShifmanFather;
     }
-
-    @computed get calcShifmanSecondPar() {
-        let calcShifmanSecondPar;
-        calcShifmanSecondPar = this.totalSalarySecondParentPercentage - this.stayingPercentageSecondParent;
-        return calcShifmanSecondPar;
-    }
+//until here
 
     //things to calculate and not show
 
-    return
     @computed get calcCustodyKind() {
-        if (Math.abs(this.stayingFirstParent - this.stayingSecondParent) < this.maxNightDiffForJointCustody) {
+        if (Math.abs(this.stayingMother - this.stayingFather) < this.maxNightDiffForJointCustody) {
             return 0;
         }
         else {
             //first parent
-            if (this.stayingFirstParent > this.stayingSecondParent) {
+            if (this.stayingMother > this.stayingFather) {
                 return 1;
             }
             //second parent
@@ -149,17 +147,16 @@ class Parameters {
                 return 2;
         }
     }
-    @computed get calcBeenResponPar() //change to calcCoordinatorParent?
-    {
+    @computed get calcCoordinatorParent() {
         if (this.calcCustodyKind > 0) {
             return this.calcCustodyKind;
         }
         else {
-            if (this.coordinatorParent === "mother") {
-                return 1;
+            if (this.coordinatorParent === "father") {
+                return 2;
             }
             else {
-                return 2;
+                return 1;
             }
         }
 
@@ -168,30 +165,26 @@ class Parameters {
 
 
     //second table
-    @computed get expensesChildrenOver6StayingRegardlessFirstParent() {
-        let salaryPercFirst = this.totalSalaryFirstParentPercentage / 100;
-        return this.expensesChildrenOver6StayingRegardless * salaryPercFirst;
+    @computed get expensesChildrenOver6StayingRegardlessMother() {
+        return this.expensesChildrenOver6StayingRegardless * this.totalSalaryMotherPercentage / 100;
     }
-    @computed get expensesChildrenOver6StayingRegardlessSecondParent() {
-        let salaryPercSecond = this.totalSalarySecondParentPercentage / 100;
-        return this.expensesChildrenOver6StayingRegardless * salaryPercSecond;
+    @computed get expensesChildrenOver6StayingRegardlessFather() {
+        return this.expensesChildrenOver6StayingRegardless * this.totalSalaryFatherPercentage / 100;
     }
 
-    @computed get unnecessaryExpensesChildrenUnder6FirstParent() {
-        let salaryPercFirst = this.totalSalaryFirstParentPercentage / 100;
-        return this.unnecessaryExpensesChildrenUnder6 * salaryPercFirst;
+    @computed get unnecessaryExpensesChildrenUnder6Mother() {
+        return this.unnecessaryExpensesChildrenUnder6 * this.totalSalaryMotherPercentage / 100;
     }
-    @computed get unnecessaryExpensesChildrenUnder6SecondParent() {
-        let salaryPercSecond = this.totalSalarySecondParentPercentage / 100;
-        return this.unnecessaryExpensesChildrenUnder6 * salaryPercSecond;
+    @computed get unnecessaryExpensesChildrenUnder6Father() {
+        return this.unnecessaryExpensesChildrenUnder6 * this.totalSalaryFatherPercentage / 100;
     }
 
-    @computed get treatmentSumSoleCustodyFirstPar() {
+    @computed get treatmentSumSoleCustodyMother() {
         if (this.calcCustodyKind == 2) {
             return this.treatmentSumSoleCustody;
         } else { return 0; };
     }
-    @computed get treatmentSumSoleCustodySecondPar() {
+    @computed get treatmentSumSoleCustodyFather() {
         if (this.calcCustodyKind == 1) {
             return this.treatmentSumSoleCustody;
         } else { return 0; };
@@ -202,16 +195,16 @@ class Parameters {
     }
     @computed get fatherNeedsToPayForKidsUnder6() {
         if (this.calcCustodyKind === 0)
-            return (1 - this.percentageFromFatherInJointCustody) / 100 * this.nessesaryChildUnder6Needs;
+            return (1 - this.percentageFromFatherInJointCustody/ 100)  * this.nessesaryChildUnder6Needs;
         else
             return this.nessesaryChildUnder6Needs;
     }
     @computed get motherMadorUnder6() {
         if (this.childrenUnder6 != 0 || this.childrenOver6 != 0)
-            return (this.childrenMador / 100) * this.childrenUnder6 / (this.childrenUnder6 + this.childrenOver6) * this.expensMadorOne
+            return (this.childrenMador / 100) * this.childrenUnder6 / (this.childrenUnder6 + this.childrenOver6) * this.expensesMadorMother;
     }
 
-    @computed get motherMadorUnder6ForFather() {
+    @computed get motherMadorUnder6FatherPays() {
         if (this.calcCustodyKind === 0)
             return 0.5 * this.motherMadorUnder6;
         else
@@ -220,11 +213,11 @@ class Parameters {
             else
                 return 0;
     }
-    @computed get expensesChildrenOver6DependingOnStayingForFather() {
-        return Math.max(0, this.expensesChildrenOver6DependingOnStaying * (this.totalSalarySecondParentPercentage - this.stayingPercentageSecondParent));
-    }
     @computed get expensesChildrenOver6DependingOnStayingForMother() {
-        return Math.max(0, this.expensesChildrenOver6DependingOnStaying * (this.totalSalaryFirstParentPercentage - this.stayingPercentageFirstParent));
+        return Math.max(0, this.expensesChildrenOver6DependingOnStaying * (this.totalSalaryMotherPercentage - this.stayingPercentageMother));
+    }
+    @computed get expensesChildrenOver6DependingOnStayingForFather() {
+        return Math.max(0, this.expensesChildrenOver6DependingOnStaying * (this.totalSalaryFatherPercentage - this.stayingPercentageFather));
     }
 
     @computed get madorOver6 () {
@@ -233,65 +226,76 @@ class Parameters {
             a = this.childrenMador/100*this.childrenOver6/(this.childrenOver6 + this.childrenUnder6);}
         if (this.calcCustodyKind == 0) {b = 2*this.minMador}
         else {
-            if (this.calcCustodyKind == 1) {b = this.expensMadorOne}
-            else {b = this.expensMadorTwo}
+            if (this.calcCustodyKind == 1) {b = this.expensesMadorMother}
+            else {b = this.expensesMadorFather}
         }
         return a*b/2;
-    }
-    @computed get madorOver6Father() {
-        let a=0;
-        if (this.calcCustodyKind == 0){
-            a = 2*this.madorOver6 * this.totalSalarySecondParentPercentage - this.madorOver6;
-        } else {
-            a = this.madorOver6 * this.totalSalarySecondParentPercentage;
-        }
-        return Math.max(a,0);
     }
     @computed get madorOver6Mother() {
         let a=0;
         if (this.calcCustodyKind == 0){
-            a = 2*this.madorOver6 * this.totalSalaryFirstParentPercentage - this.madorOver6;
+            a = 2*this.madorOver6 * this.totalSalaryMotherPercentage/100 - this.madorOver6;
         } else {
-            a = this.madorOver6 * this.totalSalaryFirstParentPercentage;
+            a = this.madorOver6 * this.totalSalaryMotherPercentage/100;
         }
         return Math.max(a,0);
     }
+    @computed get madorOver6Father() {
+        let a=0;
+        if (this.calcCustodyKind == 0){
+            a = 2*this.madorOver6 * this.totalSalaryFatherPercentage/100 - this.madorOver6;
+        } else {
+            a = this.madorOver6 * this.totalSalaryFatherPercentage/100;
+        }
+        return Math.max(a,0);
+    }
+   
 
 
 
 
     //after the first yellow
 
-    @computed get ifSecondParentIsCoordinatorThenFirstNeedsToPay() {
+    @computed get ifFatherIsCoordinatorThenMotherNeedsToPay() {
         let sum = 0;
-        if (this.calcBeenResponPar == 2) {
-            sum = (this.expensesChildrenOver6StayingRegardlessSecondParent
-                + this.unnecessaryExpensesChildrenUnder6SecondParent
-                + this.treatmentSumSoleCustodySecondPar);
+        if (this.calcCoordinatorParent == 2) {
+            sum = (this.expensesChildrenOver6StayingRegardlessFather
+                + this.unnecessaryExpensesChildrenUnder6Father
+                + this.treatmentSumSoleCustodyFather);
         } else { sum = 0 };
         return sum;
     }
-    @computed get ifFirstParentIsCoordinatorThenSecondNeedsToPay() {
+    @computed get ifMotherIsCoordinatorThenFatherNeedsToPay() {
         let sum = 0;
-        if (this.calcBeenResponPar == 1) {
-            sum = (this.expensesChildrenOver6StayingRegardlessFirstParent
-                + this.unnecessaryExpensesChildrenUnder6FirstParent
-                + this.treatmentSumSoleCustodyFirstPar);
+        if (this.calcCoordinatorParent == 1) {
+            sum = (this.expensesChildrenOver6StayingRegardlessMother
+                + this.unnecessaryExpensesChildrenUnder6Mother
+                + this.treatmentSumSoleCustodyMother);
         } else { sum = 0 };
         return sum;
     }
 
     @computed get fatherAlwaysPays() {
-        return this.fatherNeedsToPayForKidsUnder6 + this.motherMadorUnder6ForFather;
+        return this.fatherNeedsToPayForKidsUnder6 + this.motherMadorUnder6FatherPays;
     }
 
-    @computed get accordingToRelativeCalculationShifmanFather() {
-        return this.expensesChildrenOver6DependingOnStayingForFather + this.madorOver6Father;
-    }
     @computed get accordingToRelativeCalculationShifmanMother() {
         return this.expensesChildrenOver6DependingOnStayingForMother + this.madorOver6Mother;
     }
-
+    @computed get accordingToRelativeCalculationShifmanFather() {
+        return this.expensesChildrenOver6DependingOnStayingForFather + this.madorOver6Father;
+    }
+    @computed get totalSumMother() {
+        let sum = this.ifFatherIsCoordinatorThenMotherNeedsToPay
+                  + this.accordingToRelativeCalculationShifmanMother;
+        return sum;
+    }
+    @computed get totalSumFather() {
+        let sum = this.ifMotherIsCoordinatorThenFatherNeedsToPay
+                    + this.fatherAlwaysPays
+                    + this.accordingToRelativeCalculationShifmanFather;
+        return sum;
+    }
 
 
 
