@@ -76,13 +76,13 @@ class Parameters {
 
     @computed get stayingPercentageMother() {
         let stayingPercentageMother = 0;
-        stayingPercentageMother = this.calculatedDaysInYearMother / this.numOfDAysInAYear * 100;
+        stayingPercentageMother = this.calculatedDaysInYearMother / this.numOfDaysInAYear * 100;
         return stayingPercentageMother;
     }
 
     @computed get stayingPercentageFather() {
         let stayingPercentageFather = 0;
-        stayingPercentageFather = this.calculatedDaysInYearFather / this.numOfDAysInAYear * 100;
+        stayingPercentageFather = this.calculatedDaysInYearFather / this.numOfDaysInAYear * 100;
         return stayingPercentageFather;
     }
 
@@ -107,14 +107,14 @@ class Parameters {
     @computed get calculatedDaysInYearMother() {
         let calculatedDaysInYearMother;
         let calculatedStayingPerFortnightMother = this.calculatedStayingPerFortnightMother;
-        calculatedDaysInYearMother = calculatedStayingPerFortnightMother / 14 * this.numOfDAysInAYear;
+        calculatedDaysInYearMother = calculatedStayingPerFortnightMother / 14 * this.numOfDaysInAYear;
         return calculatedDaysInYearMother;
     }
 
     @computed get calculatedDaysInYearFather() {
         let calculatedDaysInYearFather;
         let calculatedStayingPerFortnightFather = this.calculatedStayingPerFortnightFather;
-        calculatedDaysInYearFather = calculatedStayingPerFortnightFather / 14 * this.numOfDAysInAYear;
+        calculatedDaysInYearFather = calculatedStayingPerFortnightFather / 14 * this.numOfDaysInAYear;
         return calculatedDaysInYearFather;
     }
 //I think hese calcshifman are unneccesary
@@ -297,9 +297,36 @@ class Parameters {
         return sum;
     }
 
+    //summary
+    @computed get differencesFather() {
+        if (this.totalSumFather > this.totalSumMother){
+            return this.totalSumFather - this.totalSumMother;
+        } else {
+            return 0;
+        }
+    } 
+    @computed get differencesMother() {
+        if (this.totalSumMother > this.totalSumFather){
+            return this.totalSumMother - this.totalSumFather ;
+        } else {
+            return 0;
+        }
+    } 
 
+    @computed get maxRegardingMinSalaryFather() {
+        return this.netSalaryFather - this.minSumForLivingToThePayer;
+    }
+    @computed get maxRegardingMinSalaryMother() {
+        return this.netSalaryMother - this.minSumForLivingToThePayer;
+    }
 
-
+    //if the parent's salary is less than minSumForLivingToThePayer, it's negative. we want to make it zero?
+    @computed get toPayFather() {
+        return Math.min(this.differencesFather, this.maxRegardingMinSalaryFather);
+    }
+    @computed get toPayMother() {
+        return Math.min(this.differencesMother, this.maxRegardingMinSalaryMother);
+    }
 
   
 

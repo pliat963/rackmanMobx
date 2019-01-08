@@ -235,7 +235,25 @@ class App extends Component {
               <td> {this.props.Parameters.totalSumMother}</td>
               <td> {this.props.Parameters.totalSumFather} </td>
             </tr>
-
+            <hr/>
+            <tr>
+              <td></td>
+              <td> הפרשים</td>
+              <td> סכום מקסימלי אחרי התחשבות במינימום שכר</td>
+              <td> סכום לתשלום </td>
+            </tr>
+            <tr>
+              <td> לפיכך יעביר האב לאם עבור מזונות</td>
+              <td> {this.props.Parameters.differencesFather}</td>
+              <td> {this.props.Parameters.maxRegardingMinSalaryFather}</td>
+              <td> {this.props.Parameters.toPayFather} </td>
+            </tr>
+            <tr>
+              <td> לפיכך תעביר האם לאב עבור מזונות</td>
+              <td> {this.props.Parameters.differencesMother}</td>
+              <td> {this.props.Parameters.maxRegardingMinSalaryMother}</td>
+              <td> {this.props.Parameters.toPayMother} </td>
+            </tr>
           </tbody>
         </table>
 
