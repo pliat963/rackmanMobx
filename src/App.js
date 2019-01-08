@@ -6,6 +6,14 @@ import './App.css';
 @observer(['Parameters'])
 class App extends Component {
 
+  // onBlur = (event) => {
+  //   let val = parseInt(event.target.value);
+  //   if (!val) { // val = NaN
+  //     this.props.Parameters[event.target.id] = 0
+  //     //  val = 0;
+  //   }
+  // }
+
   handleChange = (event) => {
     let val = parseInt(event.target.value);
     if (!val) { // val = NaN
@@ -25,7 +33,7 @@ class App extends Component {
       case "netSalaryMother": this.props.Parameters.netSalaryMother = val; break;
       case "netSalaryFather": this.props.Parameters.netSalaryFather = val; break;
       case "expensesMadorMother": this.props.Parameters.expensesMadorMother = val; break;
-      case "expensMadorFather": this.props.Parameters.expensMadorFather = val; break;
+      case "expensesMadorFather": this.props.Parameters.expensesMadorFather = val; break;
       case "expensesChildrenOver6StayingRegardless": this.props.Parameters.expensesChildrenOver6StayingRegardless = val; break;
       case "unnecessaryExpensesChildrenUnder6": this.props.Parameters.unnecessaryExpensesChildrenUnder6 = val; break;
       case "treatmentSumSoleCustody": this.props.Parameters.treatmentSumSoleCustody = val; break;
@@ -120,7 +128,7 @@ class App extends Component {
               <td> {this.props.Parameters.calcShifmanMother} % </td>
               <td> {this.props.Parameters.calcShifmanFather} % </td>
               <td>{this.props.Parameters.calcCustodyKind}</td>
-              <td>{this.props.Parameters.calcBeenResponPar}</td>
+              <td>{this.props.Parameters.calcCoordinatorParent}</td>
             </tr>
           </tbody>
         </table>
@@ -154,8 +162,8 @@ class App extends Component {
             <tr>
               <td>צורכי ילדים מעל גיל 6 - לא תלוי שהות (הולך למרכז) </td>
               <td> <input id="expensesChildrenOver6StayingRegardless" type="number" min={0} value={this.props.Parameters.expensesChildrenOver6StayingRegardless} onChange={(event) => this.handleChange(event)} /></td>
-              <td> {this.props.Parameters.expensesChildrenOver6StayingRegardlessFather} </td>
               <td> {this.props.Parameters.expensesChildrenOver6StayingRegardlessMother}</td>
+              <td> {this.props.Parameters.expensesChildrenOver6StayingRegardlessFather} </td>
               <td>הכנסות</td>
             </tr>
             <tr>

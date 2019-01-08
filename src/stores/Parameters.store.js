@@ -214,10 +214,10 @@ class Parameters {
                 return 0;
     }
     @computed get expensesChildrenOver6DependingOnStayingForMother() {
-        return Math.max(0, this.expensesChildrenOver6DependingOnStaying * (this.totalSalaryMotherPercentage - this.stayingPercentageMother));
+        return Math.max(0, this.expensesChildrenOver6DependingOnStaying * (this.totalSalaryMotherPercentage - this.stayingPercentageMother)/100);
     }
     @computed get expensesChildrenOver6DependingOnStayingForFather() {
-        return Math.max(0, this.expensesChildrenOver6DependingOnStaying * (this.totalSalaryFatherPercentage - this.stayingPercentageFather));
+        return Math.max(0, this.expensesChildrenOver6DependingOnStaying * (this.totalSalaryFatherPercentage - this.stayingPercentageFather)/100);
     }
 
     @computed get madorOver6 () {
