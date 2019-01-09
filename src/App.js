@@ -64,8 +64,8 @@ class App extends Component {
         <div className="dataChild"> נתוני ילדים</div>
         <div className="nam0fChildrenOver6">
           <div className="text">   מספר ילדים מתחת לגיל 6</div>
-          <div>  <input className="input" id="childrenUnder6" type="number" min="0" max={60} value={this.props.Parameters.childrenUnder6} onChange={(event) => this.handleChange(event)} />
-          </div>
+          <input className="input" id="childrenUnder6" type="number" min="0" max={60} value={this.props.Parameters.childrenUnder6} onChange={(event) => this.handleChange(event)} />
+          
         </div>
 
         <div className="nam0fChildrenOver6">
@@ -73,18 +73,18 @@ class App extends Component {
           <input className="input" id="childrenOver6" type="number" min="0" max={60} value={this.props.Parameters.childrenOver6} onChange={(event) => this.handleChange(event)} />
         </div>
 
-        <div className="nam0fChildrenOver6">
+        <div className="nam0fChildrenOver6BlakGreen">
           <div className="text"> צורכי ילדים מעל גיל 6 - לא תלויי שהות (הולך למרכז) </div>
           <input className="input" id="expensesChildrenOver6StayingRegardless" type="number" min={0} value={this.props.Parameters.expensesChildrenOver6StayingRegardless} onChange={(event) => this.handleChange(event)} />
         </div>
 
 
-        <div className="nam0fChildrenOver6">
+        <div className="nam0fChildrenOver6BlakGreen">
           <div className="text"> צורכי ילדים מעל גיל 6 תלויי שהות </div>
           <input className="input" id="expensesChildrenOver6DependingOnStaying" type="number" min={0} value={this.props.Parameters.expensesChildrenOver6DependingOnStaying} onChange={(event) => this.handleChange(event)} />
         </div>
 
-        <div className="nam0fChildrenOver6">
+        <div className="nam0fChildrenOver6BlakGreen">
           <div className="text" > צורכי ילדים מתחת לגיל 6 - לא הכרחיות </div>
           <input className="input" id="unnecessaryExpensesChildrenUnder6" type="number" min={0} value={this.props.Parameters.unnecessaryExpensesChildrenUnder6} onChange={(event) => this.handleChange(event)} />
         </div>
@@ -118,17 +118,18 @@ class App extends Component {
         </div>
 
 
-        <label>
-          <b> הורה מרכז: </b>
-          <select value={this.props.Parameters.coordinatorParent} onChange={(event) => this.handleCangeCoordinatorParent(event)}>
+        <div   className="nam0fChildren">
+          <div  className="text"> הורה מרכז</div>
+          <select className="ParentsRsponsiviNavBar" value={this.props.Parameters.coordinatorParent} onChange={(event) => this.handleCangeCoordinatorParent(event)}>
             <option value="mother"> אמא</option>
             <option value="father"> אבא </option>
           </select>
-        </label>
+          </div>
 
         <div>
           <br/> <br/>
-          <button onClick={(event) => this.handleSubmit(event)}> חשב </button>
+          
+          <button className="button" onClick={(event) => this.handleSubmit(event)}> חשב </button>
         </div>
 
         {this.state.submit == true ?
