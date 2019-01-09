@@ -209,10 +209,10 @@ class Parameters {
     }
 
     @computed get motherMadorUnder6FatherPays() {
-        if (this.calcCustodyKind === 0)
+        if (this.calcCustodyKind == 0)
             return 0.5 * this.motherMadorUnder6;
         else
-            if (this.calcCustodyKind === 1)
+            if (this.calcCustodyKind == 1)
                 return this.motherMadorUnder6;
             else
                 return 0;

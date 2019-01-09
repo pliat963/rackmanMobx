@@ -267,10 +267,6 @@ class AppWithTables extends Component {
 
 
 
-{  console.log(this.props.Parameters.fatherNeedsToPayForKidsUnder6, "first")}
- { console.log(this.props.Parameters.motherMadorUnder6FatherPays, "second")}
- { console.log(this.props.Parameters.fatherAlwaysPays, "sum")}
-
       </div>
     );
 

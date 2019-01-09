@@ -10,7 +10,7 @@ import { Provider } from "mobx-react";
 import AppWithTables from './AppWithTables';
 
 ReactDOM.render(
-<Provider {...stores}><App /></Provider>
+<Provider {...stores}><AppWithTables /></Provider>
 , document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
