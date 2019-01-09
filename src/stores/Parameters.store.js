@@ -318,18 +318,22 @@ class Parameters {
     } 
 
     @computed get maxRegardingMinSalaryFather() {
-        return this.netSalaryFather - this.minSumForLivingToThePayer;
+        return Math.max((this.netSalaryFather - this.minSumForLivingToThePayer),0);
     }
     @computed get maxRegardingMinSalaryMother() {
-        return this.netSalaryMother - this.minSumForLivingToThePayer;
+        return Math.max((this.netSalaryMother - this.minSumForLivingToThePayer),0);
     }
 
-    //if the parent's salary is less than minSumForLivingToThePayer, it's negative. we want to make it zero?
+    
     @computed get toPayFather() {
-        return Math.min(this.differencesFather, this.maxRegardingMinSalaryFather);
+        let a = Math.min(this.differencesFather, this.maxRegardingMinSalaryFather);
+        let b = Math.round(100*a)/100;
+        return Math.max(b,0);
     }
     @computed get toPayMother() {
-        return Math.min(this.differencesMother, this.maxRegardingMinSalaryMother);
+        let a = Math.min(this.differencesMother, this.maxRegardingMinSalaryMother);
+        let b = Math.round(100*a)/100;
+        return Math.max(b,0);
     }
 
   
