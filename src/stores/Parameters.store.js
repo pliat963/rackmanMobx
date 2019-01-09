@@ -59,18 +59,20 @@ class Parameters {
     }
     @computed get totalSalaryMotherPercentage() {
         let totalSalary = this.netSalaryMother + this.netSalaryFather;
-        if (totalSalary == 0)
+        if (totalSalary === 0)
             return 0;
         else {
-            return this.netSalaryMother * 100 / totalSalary;
+            let toReturn = Math.round(100* this.netSalaryMother * 100 / totalSalary)/100;
+            return toReturn;
         }
     }
     @computed get totalSalaryFatherPercentage() {
         let totalSalary = this.netSalaryMother + this.netSalaryFather;
-        if (totalSalary == 0)
+        if (totalSalary === 0)
             return 0;
         else {
-            return this.netSalaryFather * 100 / totalSalary;
+            let toReturn = Math.round(100* this.netSalaryFather * 100 / totalSalary) / 100;
+            return toReturn;
         }
     }
 
@@ -180,14 +182,16 @@ class Parameters {
     }
 
     @computed get treatmentSumSoleCustodyMother() {
-        if (this.calcCustodyKind == 2) {
+        if (this.calcCustodyKind === 2) {
             return this.treatmentSumSoleCustody;
-        } else { return 0; };
+        } else 
+            return 0; 
     }
     @computed get treatmentSumSoleCustodyFather() {
-        if (this.calcCustodyKind == 1) {
+        if (this.calcCustodyKind === 1) {
             return this.treatmentSumSoleCustody;
-        } else { return 0; };
+        } else 
+             return 0;
     }
     @computed get nessesaryChildUnder6Needs() {
         return this.sumForKidUnder6 * this.childrenUnder6;
@@ -195,12 +199,12 @@ class Parameters {
     }
     @computed get fatherNeedsToPayForKidsUnder6() {
         if (this.calcCustodyKind === 0)
-            return (1 - this.percentageFromFatherInJointCustody/ 100)  * this.nessesaryChildUnder6Needs;
+            return (1 - this.percentageFromFatherInJointCustody/100)  * this.nessesaryChildUnder6Needs;
         else
             return this.nessesaryChildUnder6Needs;
     }
     @computed get motherMadorUnder6() {
-        if (this.childrenUnder6 != 0 || this.childrenOver6 != 0)
+        if (this.childrenUnder6 !== 0 || this.childrenOver6 != 0)
             return (this.childrenMador / 100) * this.childrenUnder6 / (this.childrenUnder6 + this.childrenOver6) * this.expensesMadorMother;
     }
 
@@ -222,18 +226,18 @@ class Parameters {
 
     @computed get madorOver6 () {
         let a = 0 ,b = 0;
-        if (this.childrenUnder6 != 0 || this.childrenOver6 != 0) {
+        if (this.childrenUnder6 !== 0 || this.childrenOver6 !== 0) {
             a = this.childrenMador/100*this.childrenOver6/(this.childrenOver6 + this.childrenUnder6);}
-        if (this.calcCustodyKind == 0) {b = 2*this.minMador}
+        if (this.calcCustodyKind === 0) {b = 2*this.minMador}
         else {
-            if (this.calcCustodyKind == 1) {b = this.expensesMadorMother}
+            if (this.calcCustodyKind === 1) {b = this.expensesMadorMother}
             else {b = this.expensesMadorFather}
         }
         return a*b/2;
     }
     @computed get madorOver6Mother() {
         let a=0;
-        if (this.calcCustodyKind == 0){
+        if (this.calcCustodyKind === 0){
             a = 2*this.madorOver6 * this.totalSalaryMotherPercentage/100 - this.madorOver6;
         } else {
             a = this.madorOver6 * this.totalSalaryMotherPercentage/100;
@@ -242,7 +246,7 @@ class Parameters {
     }
     @computed get madorOver6Father() {
         let a=0;
-        if (this.calcCustodyKind == 0){
+        if (this.calcCustodyKind === 0){
             a = 2*this.madorOver6 * this.totalSalaryFatherPercentage/100 - this.madorOver6;
         } else {
             a = this.madorOver6 * this.totalSalaryFatherPercentage/100;
@@ -258,7 +262,7 @@ class Parameters {
 
     @computed get ifFatherIsCoordinatorThenMotherNeedsToPay() {
         let sum = 0;
-        if (this.calcCoordinatorParent == 2) {
+        if (this.calcCoordinatorParent === 2) {
             sum = (this.expensesChildrenOver6StayingRegardlessFather
                 + this.unnecessaryExpensesChildrenUnder6Father
                 + this.treatmentSumSoleCustodyFather);
@@ -267,7 +271,7 @@ class Parameters {
     }
     @computed get ifMotherIsCoordinatorThenFatherNeedsToPay() {
         let sum = 0;
-        if (this.calcCoordinatorParent == 1) {
+        if (this.calcCoordinatorParent === 1) {
             sum = (this.expensesChildrenOver6StayingRegardlessMother
                 + this.unnecessaryExpensesChildrenUnder6Mother
                 + this.treatmentSumSoleCustodyMother);

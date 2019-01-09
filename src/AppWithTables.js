@@ -228,8 +228,8 @@ class AppWithTables extends Component {
             <tr>
               <td>האב תמיד משלם </td>
               <td> </td>
-              <td> {this.props.Parameters.fatherAlwaysPays} </td>
               <td> </td>
+              <td> {this.props.Parameters.fatherAlwaysPays} </td>
             </tr>
             <tr>
               <td>לפי החישוב (שיפמן) היחסי </td>
@@ -243,7 +243,7 @@ class AppWithTables extends Component {
               <td> {this.props.Parameters.totalSumMother}</td>
               <td> {this.props.Parameters.totalSumFather} </td>
             </tr>
-            <hr/>
+           
             <tr>
               <td></td>
               <td> הפרשים</td>
@@ -265,6 +265,11 @@ class AppWithTables extends Component {
           </tbody>
         </table>
 
+
+
+{  console.log(this.props.Parameters.fatherNeedsToPayForKidsUnder6, "first")}
+ { console.log(this.props.Parameters.motherMadorUnder6FatherPays, "second")}
+ { console.log(this.props.Parameters.fatherAlwaysPays, "sum")}
 
       </div>
     );

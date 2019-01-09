@@ -8,7 +8,8 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      submit: false
+      submit: false,
+      soleCustody:false
     }
   }
 
@@ -54,6 +55,9 @@ class App extends Component {
   handleSubmit = (event) => {
     this.setState({ submit: true });
   }
+  makeSoleCustosyAppear =(event) => {
+    this.setState({soleCustody:true});
+  }
 
   render() {
     return (
@@ -90,6 +94,16 @@ class App extends Component {
         </div>
 
 
+        {this.props.Parameters.calcCustodyKind && this.state.soleCustody > 0 ?
+          <div className="nam0fChildrenOver6">
+          <div className="text"> עלות משמורן יחיד</div>
+          <input className="input" id="treatmentSumSoleCustody" type="number" min={0} value={this.props.Parameters.treatmentSumSoleCustody} onChange={(event) => this.handleChange(event)} />
+        </div>
+      : 
+      " " 
+      }
+
+
         <div className="dataChild">נתוני הורים</div>
         <div className="mamAndDad">
           <p className="momData">אם </p>
@@ -98,7 +112,7 @@ class App extends Component {
 
         <div className="nam0fChildren">
           <div className="text">ימי שהות מתוך 14</div>
-          <input className="inputStayingMom" id="stayingMother" type="number" min={0} max={14} value={this.props.Parameters.stayingMother} onChange={(event) => this.handleChange(event)} />
+          <input className="inputStayingMom" id="stayingMother" type="number" min={0} max={14} value={this.props.Parameters.stayingMother} onChange={(event) => this.handleChange(event)} onBlur={(event) => this.makeSoleCustosyAppear(event)} />
           <div className="fortnight"> {this.props.Parameters.stayingFather} </div>
         </div>
 
@@ -131,7 +145,7 @@ class App extends Component {
           <button onClick={(event) => this.handleSubmit(event)}> חשב </button>
         </div>
 
-        {this.state.submit == true ?
+        {this.state.submit === true ?
           <div> {this.props.Parameters.toPayMother > 0 ?
             "לפיכך תעביר האם לאב " + this.props.Parameters.toPayMother
             :
