@@ -100,8 +100,7 @@
   direction: rtl;
 }
 .fortnight{
-  background-color:white;
-  
+  background-color:rgb(196, 196, 196);
   margin-left:20px;
   padding-left:100px;
   border-radius: 4px;
@@ -164,4 +163,16 @@
    background-color: white; 
    height:60px; 
 
+}
+
+.summary{
+  background-color: rgba(88, 88, 88, 0.534);
+  padding: 0.5%;
+   margin:1% 20%;
+    border-radius:7px;
+    /* display: flex; */
+     display: flex; 
+     justify-content: space-between;
+     flex-direction: row;
+     margin-bottom: 1%;
 }
