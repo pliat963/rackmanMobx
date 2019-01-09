@@ -5,6 +5,12 @@ import './App.css';
 
 @observer(['Parameters'])
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      submit: false
+    }
+  }
 
   // onBlur = (event) => {
   //   let val = parseInt(event.target.value);
@@ -45,10 +51,14 @@ class App extends Component {
     this.props.Parameters.coordinatorParent = event.target.value;
   }
 
+  handleSubmit = (event) => {
+    this.setState({ submit: true });
+  }
+
   render() {
     return (
       <div className="thePage">
-        <div className="bothTitle"><h1 className="rkmanComputer"></h1>מחשבון רקמן
+        <div className="bothTitle"><h1 className="rkmanComputer"> מחשבון רקמן</h1>
         <h5 className="costParentDevos" >חישוב מזונות להורים גרושים</h5></div>
 
         <div className="dataChild"> נתוני ילדים</div>
@@ -59,10 +69,8 @@ class App extends Component {
         </div>
 
         <div className="nam0fChildrenOver6">
-
           <div className="text">  מספר ילדים מעל גיל 6   </div>
           <input className="input" id="childrenOver6" type="number" min="0" max={60} value={this.props.Parameters.childrenOver6} onChange={(event) => this.handleChange(event)} />
-
         </div>
 
         <div className="nam0fChildrenOver6">
@@ -78,48 +86,61 @@ class App extends Component {
 
         <div className="nam0fChildrenOver6">
           <div className="text" > צורכי ילדים מתחת לגיל 6 - לא הכרחיות </div>
-          <input className="input"
-            id="unnecessaryExpensesChildrenUnder6" type="number" min={0} value={this.props.Parameters.unnecessaryExpensesChildrenUnder6} onChange={(event) => this.handleChange(event)} />
+          <input className="input" id="unnecessaryExpensesChildrenUnder6" type="number" min={0} value={this.props.Parameters.unnecessaryExpensesChildrenUnder6} onChange={(event) => this.handleChange(event)} />
         </div>
 
-        <div> הכנס נתוני הורים</div>
 
         <div className="dataChild">נתוני הורים</div>
-        <div className="mamAndDad"> <p className="momData">אם </p>
-          <p className="DadData">אב</p></div>
+        <div className="mamAndDad">
+          <p className="momData">אם </p>
+          <p className="DadData">אב</p>
+        </div>
 
-        <div className="num0fChildren">
+        <div className="nam0fChildren">
           <div className="text">ימי שהות מתוך 14</div>
-          <input className="inputStayingMom" id="stayingFirstParent" type="number" min={0} max={14} value={this.props.Parameters.stayingFirstParent} onChange={(event) => this.handleChangeChildrenNum(event)} />
-          <div className="fortnight"> {this.props.Parameters.stayingSecondParent}</div>
-      </div>
+          <input className="inputStayingMom" id="stayingMother" type="number" min={0} max={14} value={this.props.Parameters.stayingMother} onChange={(event) => this.handleChange(event)} />
+          <div className="fortnight"> {this.props.Parameters.stayingFather} </div>
+        </div>
 
 
-          <div className="nam0fChildren">
-            <div className="text" >הכנסה נטו</div>
-            <input className="inputFirst" id="netSalaryFirstParent" type="number" min={0} value={this.props.Parameters.netSalaryFirstParent} onChange={(event) => this.handleChangeChildrenNum(event)} />
-            <input className="inputSecond" id="netSalarySecondParent" type="number" min={0} value={this.props.Parameters.netSalarySecondParent} onChange={(event) => this.handleChangeChildrenNum(event)} />
-
-          </div>
-
-
-          <div className="nam0fChildren">
-            <div className="text"> עלות מדור </div>
-            <input className="inputFirst" id="expensMadorOne" type="number" min={0} value={this.props.Parameters.expensMadorOne} onChange={(event) => this.handleChangeChildrenNum(event)} />
-            <input className="inputSecond" id="expensMadorTwo" type="number" min={0} value={this.props.Parameters.expensMadorTwo} onChange={(event) => this.handleChangeChildrenNum(event)} />
-          </div>
-
-
-          <label>
-            <b> הורה מרכז: </b>
-            <select value={this.props.Parameters.coordinatorParent} onChange={(event) => this.handleCangeCoordinatorParent(event)}>
-              <option value="mother"> אמא</option>
-              <option value="father"> אבא </option>
-            </select>
-          </label>
+        <div className="nam0fChildren">
+          <div className="text" >הכנסה נטו</div>
+          <input className="inputFirst" id="netSalaryMother" type="number" min={0} value={this.props.Parameters.netSalaryMother} onChange={(event) => this.handleChange(event)} />
+          <input className="inputSecond" id="netSalaryFather" type="number" min={0} value={this.props.Parameters.netSalaryFather} onChange={(event) => this.handleChange(event)} />
 
         </div>
-      
+
+
+        <div className="nam0fChildren">
+          <div className="text"> עלות מדור </div>
+          <input className="inputFirst" id="expensesMadorMother" type="number" min={0} value={this.props.Parameters.expensesMadorMother} onChange={(event) => this.handleChange(event)} />
+          <input className="inputSecond" id="expensesMadorFather" type="number" min={0} value={this.props.Parameters.expensesMadorFather} onChange={(event) => this.handleChange(event)} />
+        </div>
+
+
+        <label>
+          <b> הורה מרכז: </b>
+          <select value={this.props.Parameters.coordinatorParent} onChange={(event) => this.handleCangeCoordinatorParent(event)}>
+            <option value="mother"> אמא</option>
+            <option value="father"> אבא </option>
+          </select>
+        </label>
+
+        <div>
+          <br/> <br/>
+          <button onClick={(event) => this.handleSubmit(event)}> חשב </button>
+        </div>
+
+        {this.state.submit == true ?
+          <div> {this.props.Parameters.toPayMother > 0 ?
+            "לפיכך תעביר האם לאב " + this.props.Parameters.toPayMother
+            :
+            "לפיכך יעביר האב לאם " + this.props.Parameters.toPayFather
+          } </div>
+          : ""}
+
+      </div>
+
     );
 
   }
