@@ -2,9 +2,166 @@
 .thePage{
   text-align: center;
   direction: rtl;
+  
 }
 
 .table {
   border:1px solid black;
  
+}
+.num0fChildrenUnder6{
+  background-color: #C4C948;
+  padding: 0.5%;
+   margin:0 20%;
+    border-radius:7px;
+    /* display: flex; */
+     display: flex; 
+     justify-content: space-between;
+     flex-direction: row;
+     margin-bottom: 1%;
+}
+.nam0fChildrenOver6{
+  background-color: #C4C948;
+  padding: 0.5%;
+   margin:0 20%;
+    border-radius:7px;
+    /* display: flex; */
+     display: flex; 
+     justify-content: space-between;
+     flex-direction: row;
+     margin-bottom: 1%;
+}
+
+.nam0fChildren   {
+  background-color:#435E73;
+  padding: 0.5%;
+   margin:0 20%;
+    border-radius:7px;
+    
+     display: flex; 
+     justify-content: space-between;
+     /* flex-direction: row; */
+     margin-bottom: 1%;
+    
+}
+.ChildrnNeedN0DepTime  {
+  background-color: #829114;
+  padding: 0.5%;
+   margin:0 20%;
+    border-radius:7px;
+    /* display: flex; */
+     display: flex; 
+     justify-content: space-between;
+     flex-direction: row;
+     margin-bottom: 1%;
+}
+.ChildrnNeedN0DepTime  {
+  background-color: #829114;
+  padding: 0.5%;
+   margin:0 20%;
+    border-radius:7px;
+    /* display: flex; */
+     display: flex; 
+     justify-content: space-between;
+     flex-direction: row;
+     margin-bottom: 1%;
+}
+
+.text{
+  color:white;
+ 
+}
+.inputStayingMom{
+  margin-right: 0;
+  margin-left:80px;
+  padding-left:120px;
+  border-radius: 4px;
+  border: 0;
+  text-align: right;
+  direction: rtl;
+
+}
+.inputFirst{
+  margin-right: 0;
+  margin-left:0.5%;
+  padding-left:0.005%;
+  border-radius: 4px;
+  border: 0;
+  text-align: right;
+  direction: rtl;
+}
+.inputSecond{
+  margin-right: 0;
+  margin-left:0.5%;
+  padding-left:0.005%;
+  border-radius: 4px;
+  border: 0;
+  text-align: right;
+  direction: rtl;
+}
+.fortnight{
+  background-color:white;
+  
+  margin-left:20px;
+  padding-left:100px;
+  border-radius: 4px;
+}
+
+.rkmanComputer{
+  margin-bottom: 0px;
+}
+
+.input{
+  margin-left: 10px;
+  padding-left:27px;
+  border-radius: 7px;
+  border: 0;
+  padding: 1px 7px;
+}
+.costParentDevos{
+  margin-top: 0px;
+}
+.bothTitle{
+  background: #EDEDED;
+}
+.dataChild{
+  font-weight: 600;
+  margin-right: 20%;
+  margin-bottom:0.7%;
+  text-align: right;
+  direction: rtl;
+}
+.mamAndDad{
+  background-color: white;
+  padding: 0.20%;
+   margin:0 20%;
+    border-radius:7px;
+    /* display: flex; */
+     display: flex; 
+     justify-content: space-between;
+     flex-direction: row;
+     margin-bottom: 0%;
+
+}
+.momData{
+  margin-right:35%;
+  margin-bottom:0%;
+  text-align: right;
+  direction: rtl;
+  
+}
+
+.DadData{
+  margin-left:20%;
+  margin-bottom:0%;
+  text-align: right;
+  direction: rtl;
+}
+
+
+.dayesinweek{
+  margin:80px;
+   background-color: white; 
+   height:60px; 
+
 }
