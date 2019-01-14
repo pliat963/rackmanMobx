@@ -63,7 +63,6 @@ class App extends Component {
       <div className="thePage">
         <div className="bothTitle"><h1 className="rkmanComputer"> מחשבון רקמן</h1>
           <h5 className="costParentDevos" >חישוב מזונות להורים גרושים</h5></div>
-
         <div className="dataChild"> נתוני ילדים</div>
         <div className="nam0fChildrenOver6">
           <div className="text">   מספר ילדים מתחת לגיל 6</div>
