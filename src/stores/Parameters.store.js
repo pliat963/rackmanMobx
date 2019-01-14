@@ -226,14 +226,14 @@ class Parameters {
 
     @computed get madorOver6 () {
         let a = 0 ,b = 0;
-        if (this.childrenUnder6 !== 0 || this.childrenOver6 !== 0) {
+        if (this.childrenUnder6 + this.childrenOver6 !== 0) {
             a = this.childrenMador/100*this.childrenOver6/(this.childrenOver6 + this.childrenUnder6);}
-        if (this.calcCustodyKind === 0) {b = 2*this.minMador}
+        if (this.calcCustodyKind === 0) {b = this.minMador}
         else {
             if (this.calcCustodyKind === 1) {b = this.expensesMadorMother}
             else {b = this.expensesMadorFather}
         }
-        return a*b/2;
+        return a*b;
     }
     @computed get madorOver6Mother() {
         let a=0;

@@ -10,7 +10,8 @@ class App extends Component {
     this.state = {
       submit: false,
       soleCustody: false,
-      soleCustodyPreventEmpty:false
+      soleCustodyPreventEmpty:false,
+      
     }
   }
 
@@ -38,6 +39,7 @@ class App extends Component {
       case "unnecessaryExpensesChildrenUnder6": this.props.Parameters.unnecessaryExpensesChildrenUnder6 = val; break;
       case "treatmentSumSoleCustody": this.props.Parameters.treatmentSumSoleCustody = val; break;
       case "expensesChildrenOver6DependingOnStaying": this.props.Parameters.expensesChildrenOver6DependingOnStaying = val; break;
+      default: break;
     }
   }
 
@@ -51,7 +53,7 @@ class App extends Component {
   makeSoleCustosyAppearOrDisappear = (event) => {
     this.props.Parameters.calcCustodyKind > 0 ? this.setState({ soleCustody: true }) : this.setState({ soleCustody: false });
   }
-  handleClickSoleCustody = (event) => {
+  handleBlurSoleCustody = (event) => {
     let val = event.target.value;
     if (!val) { // val = NaN
       this.setState({soleCustodyPreventEmpty:true});
@@ -73,7 +75,7 @@ class App extends Component {
 
         <div className="nam0fChildrenOver6">
           <div className="text">  מספר ילדים מעל גיל 6   </div>
-          <input className="input" id="childrenOver6" type="number" min="0" max={60} value={this.props.Parameters.childrenOver6 !== 0 ? this.props.Parameters.childrenOver6 : " "} onChange={(event) => this.handleChange(event)} />
+          <input className="input" id="childrenOver6" type="number" min="0" max={60}  value=" " onChange={(event) => this.handleChange(event)} />
         </div>
 
         <div className="nam0fChildrenOver6BlakGreen">
@@ -96,7 +98,7 @@ class App extends Component {
         {this.state.soleCustody ?
           <div className="nam0fChildrenOver6">
             <div className="text"> עלות משמורן יחיד</div>
-            <input className="input" id="treatmentSumSoleCustody" type="number" min={0} value={this.props.Parameters.treatmentSumSoleCustody !== 0 || this.state.soleCustodyPreventEmpty ? this.props.Parameters.treatmentSumSoleCustody : " "} onChange={(event) => this.handleChange(event)} onBlur={(event) => this.handleClickSoleCustody(event)} />
+            <input className="input" id="treatmentSumSoleCustody" type="number" min={0} value={this.props.Parameters.treatmentSumSoleCustody !== 0 || this.state.soleCustodyPreventEmpty ? this.props.Parameters.treatmentSumSoleCustody : " "} onChange={(event) => this.handleChange(event)} onBlur={(event) => this.handleBlurSoleCustody(event)} />
           </div>
           :
           " "
