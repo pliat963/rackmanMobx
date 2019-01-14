@@ -52,7 +52,7 @@ class AppWithTables extends Component {
 
         <div> מספר ימים בשנה : {this.props.Parameters.numOfDaysInAYear} </div>
         <div> מינימום לילות שלא תהיה משמורת יחידה : {this.props.Parameters.minNightsSoThatItIsNotSelfCustody} </div>
-        <div> הפרש מקסימלי בין מספר לילות כדי שיהיה משמורת משותפת : {this.props.Parameters.maxNightDiffForJointCustody}</div>
+        <div> הפרש מקסימלי בין מספר לילות כדי שתהיה משמורת משותפת : {this.props.Parameters.maxNightDiffForJointCustody}</div>
         <div> סכום מינימלי למחייה שנשאר להורה המשלם : {this.props.Parameters.minSumForLivingToThePayer}</div>
         <div> סכום לילד מתחת לגיל 6 : {this.props.Parameters.sumForKidUnder6}</div>
         <div> אחוזי ההורדה מהאב במקרה של משמורת משותפת : % {this.props.Parameters.percentageFromFatherInJointCustody} </div>
