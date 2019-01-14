@@ -10,13 +10,13 @@ class App extends Component {
     this.state = {
       submit: false,
       soleCustody: false,
-      soleCustodyPreventEmpty:false,
-      
+      soleCustodyPreventEmpty: false,
+
     }
   }
 
   handleChange = (event) => {
-    let val = parseInt(event.target.value);
+    let val = parseFloat(event.target.value);
     if (!val) { // val = NaN
       val = 0;
     }
@@ -28,8 +28,6 @@ class App extends Component {
     }
 
     switch (event.target.id) {
-      case "childrenUnder6": this.props.Parameters.childrenUnder6 = val; break;
-      case "childrenOver6": this.props.Parameters.childrenOver6 = val; break;
       case "stayingMother": this.props.Parameters.stayingMother = val; break;
       case "netSalaryMother": this.props.Parameters.netSalaryMother = val; break;
       case "netSalaryFather": this.props.Parameters.netSalaryFather = val; break;
@@ -43,8 +41,14 @@ class App extends Component {
     }
   }
 
-  handleCangeCoordinatorParent = (event) => {
-    this.props.Parameters.coordinatorParent = event.target.value;
+  handleChangeSelect = (event) => {
+    switch (event.target.id) {
+      case "CoordinatorParent": this.props.Parameters.coordinatorParent = event.target.value; break;
+      case "childrenUnder6": this.props.Parameters.childrenUnder6 = event.target.value; break;
+      case "childrenOver6": this.props.Parameters.childrenOver6 = event.target.value; break;
+      default: break;
+    }
+
   }
 
   handleSubmit = (event) => {
@@ -56,25 +60,36 @@ class App extends Component {
   handleBlurSoleCustody = (event) => {
     let val = event.target.value;
     if (!val) { // val = NaN
-      this.setState({soleCustodyPreventEmpty:true});
+      this.setState({ soleCustodyPreventEmpty: true });
     }
   }
 
   render() {
+    let arrayOfNumbers = [];
+    for (let i = 0; i <= 20; i++) {
+      arrayOfNumbers.push(i);
+    };
+    let numberOptions = arrayOfNumbers.map((num) => <option value={num}>{num}</option>);
+
+
     return (
       <div className="thePage">
         <div className="bothTitle"><h1 className="rkmanComputer"> מחשבון רקמן</h1>
           <h5 className="costParentDevos" >חישוב מזונות להורים גרושים</h5></div>
         <div className="dataChild"> נתוני ילדים</div>
+
         <div className="nam0fChildrenOver6">
-          <div className="text">   מספר ילדים מתחת לגיל 6</div>
-          <div>  <input className="input" id="childrenUnder6" type="number" min="0" max={60} value={this.props.Parameters.childrenUnder6 !== 0 ? this.props.Parameters.childrenUnder6 : " "} onChange={(event) => this.handleChange(event)} />
-          </div>
+          <div className="text">  מספר ילדים מתחת לגיל 6</div>
+          <select className="selectBox" id="childrenUnder6" value={this.props.Parameters.childrenUnder6} onChange={(event) => this.handleChangeSelect(event)}>
+            {numberOptions}
+          </select>
         </div>
 
         <div className="nam0fChildrenOver6">
-          <div className="text">  מספר ילדים מעל גיל 6   </div>
-          <input className="input" id="childrenOver6" type="number" min="0" max={60}  value=" " onChange={(event) => this.handleChange(event)} />
+        <div className="text">  מספר ילדים מעל גיל 6   </div>
+          <select className="selectBox" id="childrenOver6" value={this.props.Parameters.childrenOver6} onChange={(event) => this.handleChangeSelect(event)}>
+            {numberOptions}
+          </select>
         </div>
 
         <div className="nam0fChildrenOver6BlakGreen">
@@ -95,7 +110,7 @@ class App extends Component {
 
 
         {this.state.soleCustody ?
-          <div className="nam0fChildrenOver6">
+          <div className="nam0fChildrenOver6BlakGreen">
             <div className="text"> עלות משמורן יחיד</div>
             <input className="input" id="treatmentSumSoleCustody" type="number" min={0} value={this.props.Parameters.treatmentSumSoleCustody !== 0 || this.state.soleCustodyPreventEmpty ? this.props.Parameters.treatmentSumSoleCustody : " "} onChange={(event) => this.handleChange(event)} onBlur={(event) => this.handleBlurSoleCustody(event)} />
           </div>
@@ -112,7 +127,7 @@ class App extends Component {
 
         <div className="nam0fChildren">
           <div className="text">ימי שהות מתוך 14</div>
-          <input className="inputStayingMom" id="stayingMother" type="number" min={0} max={14} value={this.props.Parameters.stayingMother !== 0 ? this.props.Parameters.stayingMother : " "} onChange={(event) => this.handleChange(event)} onBlur={(event) => this.makeSoleCustosyAppearOrDisappear(event)} />
+          <input className="inputStayingMom" id="stayingMother" type="number" step={0.5} min={0} max={14} value={this.props.Parameters.stayingMother !== 0 ? this.props.Parameters.stayingMother : " "} onChange={(event) => this.handleChange(event)} onBlur={(event) => this.makeSoleCustosyAppearOrDisappear(event)} />
           <div className="fortnight"> {this.props.Parameters.stayingFather} </div>
         </div>
 
@@ -132,22 +147,22 @@ class App extends Component {
         </div>
 
 
-        <div   className="nam0fChildren">
-          <div  className="text"> הורה מרכז</div>
-          <select className="ParentsRsponsiviNavBar" value={this.props.Parameters.coordinatorParent} onChange={(event) => this.handleCangeCoordinatorParent(event)}>
+        <div className="nam0fChildren">
+          <div className="text"> הורה מרכז</div>
+          <select className="selectBox" id="CoordinatorParent" value={this.props.Parameters.coordinatorParent} onChange={(event) => this.handleChangeSelect(event)}>
             <option value="mother"> אמא</option>
             <option value="father"> אבא </option>
           </select>
-          </div>
+        </div>
 
         <div>
-          <br/> <br/>
-          
+          <br /> <br />
+
           <button className="button" onClick={(event) => this.handleSubmit(event)}> חשב </button>
         </div>
 
         {this.state.submit === true ?
-          <div className = "summary"> {this.props.Parameters.toPayMother > 0 ?
+          <div className="summary"> {this.props.Parameters.toPayMother > 0 ?
             "לפיכך תעביר האם לאב " + this.props.Parameters.toPayMother
             :
             "לפיכך יעביר האב לאם " + this.props.Parameters.toPayFather
