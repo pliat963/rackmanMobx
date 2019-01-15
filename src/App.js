@@ -28,19 +28,20 @@ class App extends Component {
   }
 
   handleChange = (event) => {
-    let va = parseFloat(event.target.value);
-
-    if (!va) { // val = NaN
-      va = 0;
+    let val = parseFloat(event.target.value);
+   
+    if (!val) { // val = NaN
+      val = 0;
     }
-    let valWithoutLeadingZeros = parseInt(va, 10);
+    let valWithoutLeadingZeros = parseInt(val, 10);
     console.log(valWithoutLeadingZeros, "valWithoutLeadingZeros");
-    let decimalPart = va % 1;
+    let decimalPart = val % 1;
     console.log(decimalPart, "decimalPart");
-    let val = valWithoutLeadingZeros + decimalPart;
+    val = valWithoutLeadingZeros + decimalPart;
     console.log(val, "val");
+    console.log(event.target.value.toString(), "event target value")
 
-
+  
     if (event.target.max) // if max exists
     {
       if (val > event.target.max) {
@@ -51,7 +52,7 @@ class App extends Component {
     switch (event.target.id) {
       case "stayingMother":
         this.setState({ changedStayingMother: true }); 
-        this.props.Parameters.stayingMother = val;break;
+        this.props.Parameters.stayingMother = val; break;
       case "netSalaryMother":
         this.setState({ changedNetSalaryMother: true }); 
         this.props.Parameters.netSalaryMother = val; break;
@@ -66,10 +67,10 @@ class App extends Component {
         this.props.Parameters.expensesMadorFather = val; break;
       case "expensesChildrenOver6StayingRegardless":
         this.setState({ changedExpensesChildrenOver6StayingRegardless: true }); 
-        this.props.Parameters.expensesChildrenOver6StayingRegardless = val; break;
+        this.props.Parameters.expensesChildrenOver6StayingRegardless =  val; break;
       case "expensesChildrenOver6DependingOnStaying":
         this.setState({ changedExpensesChildrenOver6DependingOnStaying: true }); 
-        this.props.Parameters.expensesChildrenOver6DependingOnStaying = val; break;
+        this.props.Parameters.expensesChildrenOver6DependingOnStaying =  val; break;
       case "unnecessaryExpensesChildrenUnder6":
         this.setState({ changedUnnecessaryExpensesChildrenUnder6: true }); 
         this.props.Parameters.unnecessaryExpensesChildrenUnder6 = val; break;
@@ -86,11 +87,23 @@ class App extends Component {
         this.setState({ changedCoordinatorParent: true }); 
         this.props.Parameters.coordinatorParent = event.target.value; break;
       case "childrenUnder6":
-        this.setState({ changedChildrenUnder6: true }); 
-        this.props.Parameters.childrenUnder6 = event.target.value; break;
+      this.setState({ changedChildrenUnder6: true }); 
+      this.props.Parameters.childrenUnder6 = event.target.value;
+          if(event.target.value == 0) {
+            this.props.Parameters.unnecessaryExpensesChildrenUnder6 = 0;
+            this.setState({changedUnnecessaryExpensesChildrenUnder6: false});
+          };
+         break;
       case "childrenOver6":
         this.setState({ changedChildrenOver6: true }); 
-        this.props.Parameters.childrenOver6 = event.target.value; break;
+        this.props.Parameters.childrenOver6 = event.target.value; 
+        if(event.target.value == 0) {
+          this.props.Parameters.expensesChildrenOver6StayingRegardless = 0;
+          this.setState({changedExpensesChildrenOver6StayingRegardless: false});
+          this.props.Parameters.expensesChildrenOver6DependingOnStaying = 0;
+          this.setState({changedExpensesChildrenOver6DependingOnStaying: false});
+        }; 
+        break;
       default: break;
     }
 
@@ -101,6 +114,7 @@ class App extends Component {
   }
   makeSoleCustosyAppearOrDisappear = (event) => {
     this.props.Parameters.calcCustodyKind > 0 ? this.setState({ soleCustody: true }) : this.setState({ soleCustody: false });
+    if (this.props.Parameters.calcCustodyKind == 0) {this.props.Parameters.treatmentSumSoleCustody = 0};
   }
 
 
