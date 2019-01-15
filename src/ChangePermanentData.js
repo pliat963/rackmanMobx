@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { observer } from 'mobx-react';
 import './App.css';
+import './changePermanentData.css';
 //import { observer } from 'mobx';
 @observer(['Parameters'])
 
@@ -35,32 +36,32 @@ class ChangePermanentData extends Component {
     render() {
         return (
             <div className="thePage">
-                <div className="bothTitle"><h1 className="rkmanComputer">  נתונים קבועים</h1></div>
+                <div className="backgroundTitle"><h1 className="title">  נתונים קבועים</h1></div>
                 <br></br>
-                <div className="nam0fChildrenOver6"  >
+                <div className="cellToFill"  >
                     <div >ימים בשנה:</div>
-                    <input className="input" id="numOfDaysInAYear" type="number" min="0" max={370} value={this.props.Parameters.numOfDaysInAYear} onChange={(event) => this.handleChange(event)} />
+                    <input id="numOfDaysInAYear" type="number" min="0" max={370} value={this.props.Parameters.numOfDaysInAYear} onChange={(event) => this.handleChange(event)} />
                 </div>
-                <div className="nam0fChildrenOver6"  >
+                <div className="cellToFill"  >
                     <div >מינימום לילות שלא תהיה משמורת יחידה:</div>
-                    <input className="input" id="minNightsSoThatItIsNotSelfCustody" type="number" min="0" max={14} value={this.props.Parameters.minNightsSoThatItIsNotSelfCustody} onChange={(event) => this.handleChange(event)} />
+                    <input id="minNightsSoThatItIsNotSelfCustody" type="number" min="0" max={14} value={this.props.Parameters.minNightsSoThatItIsNotSelfCustody} onChange={(event) => this.handleChange(event)} />
                 </div>
-                <div className="nam0fChildrenOver6" >
+                <div className="cellToFill" >
                     <div>מספר לילות כדי שתהיה משמורת משותפת:</div>
-                    <input className="input" id="maxNightDiffForJointCustody" type="number" min="0" max={14} value={this.props.Parameters.maxNightDiffForJointCustody} onChange={(event) => this.handleChange(event)} />
+                    <input id="maxNightDiffForJointCustody" type="number" min="0" max={14} value={this.props.Parameters.maxNightDiffForJointCustody} onChange={(event) => this.handleChange(event)} />
                 </div>
 
-                <div className="nam0fChildrenOver6">
+                <div className="cellToFill">
                     <div>  סכום מינימלי למחיה שנשאר להורה המשלם-כולל מדור:</div>
-                    <input className="input" id="minSumForLivingToThePayer" type="number" min="0" value={this.props.Parameters.minSumForLivingToThePayer} onChange={(event) => this.handleChange(event)} />
+                    <input id="minSumForLivingToThePayer" type="number" min="0" value={this.props.Parameters.minSumForLivingToThePayer} onChange={(event) => this.handleChange(event)} />
                 </div>
-                <div className="nam0fChildrenOver6">
+                <div className="cellToFill">
                     <div>סכום לילד מתחת לגיל 6:</div>
-                    <input className="input" id="sumForKidUnder6" type="number" min="0" value={this.props.Parameters.sumForKidUnder6} onChange={(event) => this.handleChange(event)} />
+                    <input id="sumForKidUnder6" type="number" min="0" value={this.props.Parameters.sumForKidUnder6} onChange={(event) => this.handleChange(event)} />
                 </div>
-                <div className="nam0fChildrenOver6">
+                <div className="cellToFill">
                     <div>אחוזי ההורדה מהאב במקרה של משמורת משותפת:</div> %
-                    <input className="input" id="percentageFromFatherInJointCustody" type="number" min="0" max={100} value={this.props.Parameters.percentageFromFatherInJointCustody} onChange={(event) => this.handleChange(event)} />
+                    <input id="percentageFromFatherInJointCustody" type="number" min="0" max={100} value={this.props.Parameters.percentageFromFatherInJointCustody} onChange={(event) => this.handleChange(event)} />
                 </div>
             </div>
         );

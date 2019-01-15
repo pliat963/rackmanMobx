@@ -15,27 +15,31 @@ class App extends Component {
       changedUnnecessaryExpensesChildrenUnder6: false,
       changedTreatmentSumSoleCustody: false,
       changedStayingMother: false,
-      changedNetSalaryMother:false,
-      changedNetSalaryFather:false,
-      ChangedExpensesMadorMother:false,
-      changedExpensesMadorFather:false,
+      changedNetSalaryMother: false,
+      changedNetSalaryFather: false,
+      ChangedExpensesMadorMother: false,
+      changedExpensesMadorFather: false,
       //selects
-      changedChildrenUnder6:false,
-      changedChildrenOver6:false,
-      changedCoordinatorParent:false
-     
+      changedChildrenUnder6: false,
+      changedChildrenOver6: false,
+      changedCoordinatorParent: false
+
     }
   }
 
   handleChange = (event) => {
-    let val = parseFloat(event.target.value);
-        
-    if (!val) { // val = NaN
-      val = 0;
+    let va = parseFloat(event.target.value);
+
+    if (!va) { // val = NaN
+      va = 0;
     }
-    let valWithoutLeadingZeros = parseInt(val,10);
-    let decimalPart = val%1;
-    val = valWithoutLeadingZeros + decimalPart;
+    let valWithoutLeadingZeros = parseInt(va, 10);
+    console.log(valWithoutLeadingZeros, "valWithoutLeadingZeros");
+    let decimalPart = va % 1;
+    console.log(decimalPart, "decimalPart");
+    let val = valWithoutLeadingZeros + decimalPart;
+    console.log(val, "val");
+
 
     if (event.target.max) // if max exists
     {
@@ -46,47 +50,47 @@ class App extends Component {
 
     switch (event.target.id) {
       case "stayingMother":
-                this.props.Parameters.stayingMother = val;
-                this.setState({ changedStayingMother: true }); break;
+        this.setState({ changedStayingMother: true }); 
+        this.props.Parameters.stayingMother = val;break;
       case "netSalaryMother":
-               this.props.Parameters.netSalaryMother = val;
-               this.setState({changedNetSalaryMother:true}); break;
+        this.setState({ changedNetSalaryMother: true }); 
+        this.props.Parameters.netSalaryMother = val; break;
       case "netSalaryFather":
-               this.props.Parameters.netSalaryFather = val; 
-               this.setState({changedNetSalaryFather:true}); break;
+        this.setState({ changedNetSalaryFather: true }); 
+        this.props.Parameters.netSalaryFather = val; break;
       case "expensesMadorMother":
-               this.props.Parameters.expensesMadorMother = val;
-               this.setState({ChangedExpensesMadorMother:true}); break;
+        this.setState({ ChangedExpensesMadorMother: true }); 
+        this.props.Parameters.expensesMadorMother = val; break;
       case "expensesMadorFather":
-               this.props.Parameters.expensesMadorFather = val;
-               this.setState({changedExpensesMadorFather:true}); break;
+        this.setState({ changedExpensesMadorFather: true }); 
+        this.props.Parameters.expensesMadorFather = val; break;
       case "expensesChildrenOver6StayingRegardless":
-               this.props.Parameters.expensesChildrenOver6StayingRegardless = val;
-               this.setState({ changedExpensesChildrenOver6StayingRegardless: true }); break;
+        this.setState({ changedExpensesChildrenOver6StayingRegardless: true }); 
+        this.props.Parameters.expensesChildrenOver6StayingRegardless = val; break;
       case "expensesChildrenOver6DependingOnStaying":
-               this.props.Parameters.expensesChildrenOver6DependingOnStaying = val;
-               this.setState({ changedExpensesChildrenOver6DependingOnStaying: true }); break;
+        this.setState({ changedExpensesChildrenOver6DependingOnStaying: true }); 
+        this.props.Parameters.expensesChildrenOver6DependingOnStaying = val; break;
       case "unnecessaryExpensesChildrenUnder6":
-               this.props.Parameters.unnecessaryExpensesChildrenUnder6 = val;
-               this.setState({ changedUnnecessaryExpensesChildrenUnder6: true }); break;
+        this.setState({ changedUnnecessaryExpensesChildrenUnder6: true }); 
+        this.props.Parameters.unnecessaryExpensesChildrenUnder6 = val; break;
       case "treatmentSumSoleCustody":
-                this.props.Parameters.treatmentSumSoleCustody = val;
-                this.setState({ changedTreatmentSumSoleCustody: true }); break;
+        this.setState({ changedTreatmentSumSoleCustody: true }); 
+        this.props.Parameters.treatmentSumSoleCustody = val; break;
       default: break;
     }
   }
 
   handleChangeSelect = (event) => {
     switch (event.target.id) {
-      case "CoordinatorParent": 
-                  this.props.Parameters.coordinatorParent = event.target.value; 
-                  this.setState({changedCoordinatorParent:true}); break;
-      case "childrenUnder6": 
-                  this.props.Parameters.childrenUnder6 = event.target.value;
-                  this.setState({changedChildrenUnder6:true}); break;
-      case "childrenOver6": 
-                  this.props.Parameters.childrenOver6 = event.target.value;
-                  this.setState({changedChildrenOver6:true}); break;
+      case "CoordinatorParent":
+        this.setState({ changedCoordinatorParent: true }); 
+        this.props.Parameters.coordinatorParent = event.target.value; break;
+      case "childrenUnder6":
+        this.setState({ changedChildrenUnder6: true }); 
+        this.props.Parameters.childrenUnder6 = event.target.value; break;
+      case "childrenOver6":
+        this.setState({ changedChildrenOver6: true }); 
+        this.props.Parameters.childrenOver6 = event.target.value; break;
       default: break;
     }
 
@@ -106,7 +110,7 @@ class App extends Component {
       arrayOfNumbers.push(i);
     };
     let numberOptions = arrayOfNumbers.map((num) => <option value={num}>{num}</option>);
-    
+
 
 
     return (
@@ -117,36 +121,40 @@ class App extends Component {
 
         <div className="nam0fChildrenOver6">
           <div className="text">  מספר ילדים מתחת לגיל 6</div>
-          <select className="selectBox" id="childrenUnder6" value={this.state.changedChildrenUnder6? this.props.Parameters.childrenUnder6: "בחר/י"} onChange={(event) => this.handleChangeSelect(event)}>
-             <option value="choose" hidden > בחר/י </option>
-              {numberOptions}
+          <select className="selectBox" id="childrenUnder6" value={this.state.changedChildrenUnder6 ? this.props.Parameters.childrenUnder6 : "בחר/י"} onChange={(event) => this.handleChangeSelect(event)}>
+            <option value="choose" hidden > בחר/י </option>
+            {numberOptions}
           </select>
         </div>
 
         <div className="nam0fChildrenOver6">
           <div className="text">  מספר ילדים מעל גיל 6   </div>
-          <select className="selectBox" id="childrenOver6" value={this.state.changedChildrenOver6? this.props.Parameters.childrenOver6: "בחר/י"} onChange={(event) => this.handleChangeSelect(event)}>
-          <option value="choose" hidden > בחר/י </option>
+          <select className="selectBox" id="childrenOver6" value={this.state.changedChildrenOver6 ? this.props.Parameters.childrenOver6 : "בחר/י"} onChange={(event) => this.handleChangeSelect(event)}>
+            <option value="choose" hidden > בחר/י </option>
             {numberOptions}
           </select>
         </div>
 
+{this.props.Parameters.childrenOver6 > 0 ?
         <div className="nam0fChildrenOver6BlakGreen">
           <div className="text"> צורכי ילדים מעל גיל 6 - לא תלויי שהות (הולך למרכז) </div>
           <input className="input" id="expensesChildrenOver6StayingRegardless" type="number" min={0} value={this.state.changedExpensesChildrenOver6StayingRegardless ? this.props.Parameters.expensesChildrenOver6StayingRegardless : ""} onChange={(event) => this.handleChange(event)} />
         </div>
+        : ""}
 
-
+{this.props.Parameters.childrenOver6 > 0 ?
         <div className="nam0fChildrenOver6BlakGreen">
           <div className="text"> צורכי ילדים מעל גיל 6 תלויי שהות </div>
           <input className="input" id="expensesChildrenOver6DependingOnStaying" type="number" min={0} value={this.state.changedExpensesChildrenOver6DependingOnStaying ? this.props.Parameters.expensesChildrenOver6DependingOnStaying : ""} onChange={(event) => this.handleChange(event)} />
         </div>
+        : ""}
 
+        {this.props.Parameters.childrenUnder6 > 0 ?
         <div className="nam0fChildrenOver6BlakGreen">
           <div className="text" > צורכי ילדים מתחת לגיל 6 - לא הכרחיות </div>
           <input className="input" id="unnecessaryExpensesChildrenUnder6" type="number" min={0} value={this.state.changedUnnecessaryExpensesChildrenUnder6 ? this.props.Parameters.unnecessaryExpensesChildrenUnder6 : ""} onChange={(event) => this.handleChange(event)} />
         </div>
-
+:"" }
 
         {this.state.soleCustody ?
           <div className="nam0fChildrenOver6BlakGreen">

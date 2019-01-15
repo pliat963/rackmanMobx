@@ -1,0 +1,33 @@
+.thePage{
+    text-align: center;
+    direction: rtl; 
+}
+input {
+    text-align: center;
+    width: 25%;
+    padding-left:1.5rem;
+    padding-right:1.5rem;
+    border-radius: 7px;
+    border: 0;
+    padding: 1px 7px;
+}
+.backgroundTitle{
+    background: #EDEDED;
+    margin-top:0;
+    height:55%;
+}
+.title{
+    margin:0;
+  }
+.cellToFill{
+    background-color: #C4C948;
+    padding: 0.5%;
+    margin:0 20%;
+    border-radius:7px;
+    /* display: flex; */
+    display: flex; 
+    justify-content: space-between;
+    flex-direction: row;
+    margin-bottom: 1%;
+}
+
