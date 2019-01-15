@@ -131,7 +131,8 @@ class App extends Component {
 
     return (
       <div className="thePage">
-        <div className="bothTitle"><h1 className="rkmanComputer"> מחשבון רקמן</h1>
+      
+        <div className="bothTitle"><br></br><h1 className="rkmanComputer"> מחשבון רקמן</h1>
           <h5 className="costParentDevos" >חישוב מזונות להורים גרושים</h5></div>
         
         <div className="dataChild">נתוני הורים</div>
@@ -142,8 +143,8 @@ class App extends Component {
 
         <div className="nam0fChildren">
           <div className="text">ימי שהות מתוך 14</div>
-          <input className="inputStayingMom" id="stayingMother" type="number" step={0.5} min={0} max={14} value={this.state.changedStayingMother ? this.props.Parameters.stayingMother : ""} onChange={(event) => this.handleChange(event)} onBlur={(event) => this.makeSoleCustosyAppearOrDisappear(event)} />
-          <div className="fortnight"> {this.props.Parameters.stayingFather} </div>
+          <input className="inputFirst" id="stayingMother" type="number" step={0.5} min={0} max={14} value={this.state.changedStayingMother ? this.props.Parameters.stayingMother : ""} onChange={(event) => this.handleChange(event)} onBlur={(event) => this.makeSoleCustosyAppearOrDisappear(event)} />
+          <input className="inputSecond" id="" disabled="disabled" value={this.props.Parameters.stayingFather}  />
         </div>
 
 
