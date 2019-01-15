@@ -39,9 +39,10 @@ class App extends Component {
     console.log(decimalPart, "decimalPart");
     val = valWithoutLeadingZeros + decimalPart;
     console.log(val, "val");
-    console.log(event.target.value.toString(), "event target value")
+   // val = val.toString();
+    // console.log(event.target.value.toString(), "event target value");
 
-  
+
     if (event.target.max) // if max exists
     {
       if (val > event.target.max) {
@@ -114,6 +115,7 @@ class App extends Component {
   }
   makeSoleCustosyAppearOrDisappear = (event) => {
     this.props.Parameters.calcCustodyKind > 0 ? this.setState({ soleCustody: true }) : this.setState({ soleCustody: false });
+    this.setState({ changedStayingMother: true }); 
     if (this.props.Parameters.calcCustodyKind == 0) {this.props.Parameters.treatmentSumSoleCustody = 0};
   }
 
