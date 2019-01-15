@@ -23,10 +23,10 @@ class Parameters {
   
 
     //second table
-    @observable expensesChildrenOver6StayingRegardless = 0;
-    @observable unnecessaryExpensesChildrenUnder6 = 0;
+    @observable expensesChildrenOver6StayingRegardless = 0; //needs to be initialized to zero
+    @observable expensesChildrenOver6DependingOnStaying = 0; //needs to be initialized to zero
+    @observable unnecessaryExpensesChildrenUnder6 = 0; //needs to be initialized to zero
     @observable treatmentSumSoleCustody = 0;
-    @observable expensesChildrenOver6DependingOnStaying = 0;
 
 
    
