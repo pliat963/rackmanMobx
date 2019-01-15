@@ -28,15 +28,13 @@ class App extends Component {
   }
 
   handleChange = (event) => {
+    this.setState({submit:false});
     let val = parseFloat(event.target.value);
    
     if (!val) { // val = NaN
       val = 0;
     }
-    // let valWithoutLeadingZeros = parseInt(val, 10);
-    // let decimalPart = val % 1;
-    // val = valWithoutLeadingZeros + decimalPart;
-
+    
     if (event.target.max) // if max exists
     {
       if (val > event.target.max) {
@@ -84,7 +82,7 @@ class App extends Component {
       case "childrenUnder6":
       this.setState({ changedChildrenUnder6: true }); 
       this.props.Parameters.childrenUnder6 = event.target.value;
-          if(event.target.value == 0) {
+           if(event.target.value == 0) {
             this.props.Parameters.unnecessaryExpensesChildrenUnder6 = 0;
             this.setState({changedUnnecessaryExpensesChildrenUnder6: false});
           };
