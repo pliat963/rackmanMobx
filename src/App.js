@@ -19,15 +19,24 @@ class App extends Component {
       changedNetSalaryFather:false,
       ChangedExpensesMadorMother:false,
       changedExpensesMadorFather:false,
+      //selects
+      changedChildrenUnder6:false,
+      changedChildrenOver6:false,
+      changedCoordinatorParent:false
      
     }
   }
 
   handleChange = (event) => {
     let val = parseFloat(event.target.value);
+        
     if (!val) { // val = NaN
       val = 0;
     }
+    let valWithoutLeadingZeros = parseInt(val,10);
+    let decimalPart = val%1;
+    val = valWithoutLeadingZeros + decimalPart;
+
     if (event.target.max) // if max exists
     {
       if (val > event.target.max) {
@@ -69,9 +78,15 @@ class App extends Component {
 
   handleChangeSelect = (event) => {
     switch (event.target.id) {
-      case "CoordinatorParent": this.props.Parameters.coordinatorParent = event.target.value; break;
-      case "childrenUnder6": this.props.Parameters.childrenUnder6 = event.target.value; break;
-      case "childrenOver6": this.props.Parameters.childrenOver6 = event.target.value; break;
+      case "CoordinatorParent": 
+                  this.props.Parameters.coordinatorParent = event.target.value; 
+                  this.setState({changedCoordinatorParent:true}); break;
+      case "childrenUnder6": 
+                  this.props.Parameters.childrenUnder6 = event.target.value;
+                  this.setState({changedChildrenUnder6:true}); break;
+      case "childrenOver6": 
+                  this.props.Parameters.childrenOver6 = event.target.value;
+                  this.setState({changedChildrenOver6:true}); break;
       default: break;
     }
 
@@ -91,6 +106,7 @@ class App extends Component {
       arrayOfNumbers.push(i);
     };
     let numberOptions = arrayOfNumbers.map((num) => <option value={num}>{num}</option>);
+    
 
 
     return (
@@ -101,14 +117,16 @@ class App extends Component {
 
         <div className="nam0fChildrenOver6">
           <div className="text">  מספר ילדים מתחת לגיל 6</div>
-          <select className="selectBox" id="childrenUnder6" value={this.props.Parameters.childrenUnder6} onChange={(event) => this.handleChangeSelect(event)}>
-            {numberOptions}
+          <select className="selectBox" id="childrenUnder6" value={this.state.changedChildrenUnder6? this.props.Parameters.childrenUnder6: "בחר/י"} onChange={(event) => this.handleChangeSelect(event)}>
+             <option value="choose" hidden > בחר/י </option>
+              {numberOptions}
           </select>
         </div>
 
         <div className="nam0fChildrenOver6">
           <div className="text">  מספר ילדים מעל גיל 6   </div>
-          <select className="selectBox" id="childrenOver6" value={this.props.Parameters.childrenOver6} onChange={(event) => this.handleChangeSelect(event)}>
+          <select className="selectBox" id="childrenOver6" value={this.state.changedChildrenOver6? this.props.Parameters.childrenOver6: "בחר/י"} onChange={(event) => this.handleChangeSelect(event)}>
+          <option value="choose" hidden > בחר/י </option>
             {numberOptions}
           </select>
         </div>
@@ -170,7 +188,8 @@ class App extends Component {
 
         <div className="nam0fChildren">
           <div className="text"> הורה מרכז</div>
-          <select className="selectBox" id="CoordinatorParent" value={this.props.Parameters.coordinatorParent} onChange={(event) => this.handleChangeSelect(event)}>
+          <select className="selectBox" id="CoordinatorParent" value={this.state.changedCoordinatorParent ? this.props.Parameters.coordinatorParent : "בחר/י"} onChange={(event) => this.handleChangeSelect(event)}>
+            <option value="choose" hidden > בחר/י </option>
             <option value="mother"> אמא</option>
             <option value="father"> אבא </option>
           </select>
