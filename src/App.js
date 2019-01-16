@@ -10,6 +10,7 @@ class App extends Component {
     this.state = {
       submit: false,
       soleCustody: false,
+      //prevent zeros from appearing
       changedExpensesChildrenOver6StayingRegardless: false,
       changedExpensesChildrenOver6DependingOnStaying: false,
       changedUnnecessaryExpensesChildrenUnder6: false,
@@ -25,6 +26,12 @@ class App extends Component {
       changedCoordinatorParent: false
 
     }
+
+    let arrayOfNumbers = [];
+    for (let i = 0; i <= 20; i++) {
+      arrayOfNumbers.push(i);
+    };
+    this.numberOptions = arrayOfNumbers.map((num) => <option value={num} key={num.toString()}>{num}</option>);
   }
 
   handleChange = (event) => {
@@ -81,7 +88,7 @@ class App extends Component {
         this.props.Parameters.coordinatorParent = event.target.value; break;
       case "childrenUnder6":
       this.setState({ changedChildrenUnder6: true }); 
-      this.props.Parameters.childrenUnder6 = event.target.value;
+      this.props.Parameters.childrenUnder6 = parseInt(event.target.value);
            if(event.target.value == 0) {
             this.props.Parameters.unnecessaryExpensesChildrenUnder6 = 0;
             this.setState({changedUnnecessaryExpensesChildrenUnder6: false});
@@ -89,12 +96,12 @@ class App extends Component {
          break;
       case "childrenOver6":
         this.setState({ changedChildrenOver6: true }); 
-        this.props.Parameters.childrenOver6 = event.target.value; 
+        this.props.Parameters.childrenOver6 = parseInt(event.target.value); 
         if(event.target.value == 0) {
           this.props.Parameters.expensesChildrenOver6StayingRegardless = 0;
-          this.setState({changedExpensesChildrenOver6StayingRegardless: false});
           this.props.Parameters.expensesChildrenOver6DependingOnStaying = 0;
-          this.setState({changedExpensesChildrenOver6DependingOnStaying: false});
+          this.setState({changedExpensesChildrenOver6StayingRegardless: false,
+                         changedExpensesChildrenOver6DependingOnStaying: false});
         }; 
         break;
       default: break;
@@ -107,23 +114,16 @@ class App extends Component {
   }
   makeSoleCustosyAppearOrDisappear = (event) => {
     this.props.Parameters.calcCustodyKind > 0 ? this.setState({ soleCustody: true }) : this.setState({ soleCustody: false });
-    this.setState({ changedStayingMother: true }); 
     if (this.props.Parameters.calcCustodyKind == 0) {this.props.Parameters.treatmentSumSoleCustody = 0};
   }
 
 
   render() {
-    let arrayOfNumbers = [];
-    for (let i = 0; i <= 20; i++) {
-      arrayOfNumbers.push(i);
-    };
-    let numberOptions = arrayOfNumbers.map((num) => <option value={num}>{num}</option>);
+   
 
-
-
+    console.log("Parameters",this.props.Parameters);
     return (
-      <div className="thePage">
-      
+      <div className="thePage">      
         <div className="bothTitle"><br></br><h1 className="rkmanComputer"> מחשבון רקמן</h1>
           <h5 className="costParentDevos" >חישוב מזונות להורים גרושים</h5></div>
         
@@ -136,9 +136,9 @@ class App extends Component {
         <div className="nam0fChildren">
           <div className="text">ימי שהות מתוך 14</div>
           <input className="inputFirst" id="stayingMother" type="number" step={0.5} min={0} max={14} value={this.state.changedStayingMother ? this.props.Parameters.stayingMother.toString() : ""} onChange={(event) => this.handleChange(event)} onBlur={(event) => this.makeSoleCustosyAppearOrDisappear(event)} />
-          <input className="inputSecond" id="" disabled="disabled" value={this.props.Parameters.stayingFather}  />
+          <input className="inputSecond" id="stayingFather" disabled="disabled" value={this.props.Parameters.stayingFather}  />
         </div>
-
+     
 
         <div className="nam0fChildren">
           <div className="text" >הכנסה נטו</div>
@@ -158,7 +158,7 @@ class App extends Component {
         <div className="nam0fChildren">
           <div className="text"> הורה מרכז</div>
           <select className="selectBox" id="CoordinatorParent" value={this.state.changedCoordinatorParent ? this.props.Parameters.coordinatorParent : "בחר/י"} onChange={(event) => this.handleChangeSelect(event)}>
-            <option value="choose" hidden > בחר/י </option>
+            <option value="choose" key="choose" hidden > בחר/י </option>
             <option value="mother"> אמא</option>
             <option value="father"> אבא </option>
           </select>
@@ -169,16 +169,16 @@ class App extends Component {
 <div className="nam0fChildrenOver6">
   <div className="text">  מספר ילדים מתחת לגיל 6</div>
   <select className="selectBox" id="childrenUnder6" value={this.state.changedChildrenUnder6 ? this.props.Parameters.childrenUnder6 : "בחר/י"} onChange={(event) => this.handleChangeSelect(event)}>
-    <option value="choose" hidden > בחר/י </option>
-    {numberOptions}
+    <option value="choose" key="choose" hidden > בחר/י </option>
+    {this.numberOptions}
   </select>
 </div>
 
 <div className="nam0fChildrenOver6">
   <div className="text">  מספר ילדים מעל גיל 6   </div>
   <select className="selectBox" id="childrenOver6" value={this.state.changedChildrenOver6 ? this.props.Parameters.childrenOver6 : "בחר/י"} onChange={(event) => this.handleChangeSelect(event)}>
-    <option value="choose" hidden > בחר/י </option>
-    {numberOptions}
+    <option value="choose" key="choose" hidden > בחר/י </option>
+    {this.numberOptions}
   </select>
 </div>
 
@@ -227,6 +227,8 @@ class App extends Component {
             "לפיכך יעביר האב לאם " + this.props.Parameters.toPayFather
           } </div>
           : ""}
+          {
+          }
 
       </div>
 
