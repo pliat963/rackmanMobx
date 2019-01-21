@@ -2,6 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
+
+
+
 import ChangePermanentData from './ChangePermanentData'
 //import AppWithTables from './AppWithTables';
 
@@ -11,7 +14,7 @@ import { Provider } from "mobx-react";
 import AppWithTables from './AppWithTables';
 
 ReactDOM.render(
-<Provider {...stores}><App/></Provider>
+<Provider {...stores}><ChangePermanentData/></Provider>
 , document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
