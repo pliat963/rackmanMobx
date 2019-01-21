@@ -9,6 +9,16 @@ class Parameters {
     @observable sumForKidUnder6 = 1300;
     @observable percentageFromFatherInJointCustody = 40;
 
+ //for the botton on save permanent data  
+
+    @observable tempNumOfDaysInAYear = 365;
+    @observable tempMinNightsSoThatItIsNotSelfCustody = 2;
+    @observable tempMaxNightDiffForJointCustody = 4;
+    @observable tempMinSumForLivingToThePayer = 4000;
+    @observable tempSumForKidUnder6 = 1300;
+    @observable tempPercentageFromFatherInJointCustody = 40;
+
+
     //fitst table - parents data
     @observable childrenUnder6 = 0;
     @observable childrenOver6 = 0;
@@ -19,9 +29,9 @@ class Parameters {
     @observable expensesMadorFather = 0;
     @observable coordinatorParent = '';
       
-    //for the botton on ChangePeermateDATE
    
-
+   
+ 
 
   
 
