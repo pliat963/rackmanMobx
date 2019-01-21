@@ -36,7 +36,7 @@ class ChangePermanentData extends Component {
     render() {
         return (
             <div className="thePage">
-                <div className="backgroundTitle"><h1 className="title">  נתונים קבועים</h1></div>
+                <div className="backgroundTitle"><h1 className="title">  הגדרת נתונים קבועים</h1></div>
                 <br></br>
                 <div className="cellToFill"  >
                     <div >ימים בשנה:</div>
@@ -60,8 +60,8 @@ class ChangePermanentData extends Component {
                     <input id="sumForKidUnder6" type="number" min="0" value={this.props.Parameters.sumForKidUnder6} onChange={(event) => this.handleChange(event)} />
                 </div>
                 <div className="cellToFill">
-                    <div>אחוזי ההורדה מהאב במקרה של משמורת משותפת:</div> %
-                    <input id="percentageFromFatherInJointCustody" type="number" min="0" max={100} value={this.props.Parameters.percentageFromFatherInJointCustody} onChange={(event) => this.handleChange(event)} />
+                    <div>אחוזי ההורדה מהאב במקרה של משמורת משותפת:</div> 
+                    % <input id="percentageFromFatherInJointCustody" type="number" min="0" max={100} value={this.props.Parameters.percentageFromFatherInJointCustody} onChange={(event) => this.handleChange(event)} />
                 </div>
             </div>
         );
