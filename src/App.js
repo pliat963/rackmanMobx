@@ -90,7 +90,7 @@ class App extends Component {
       case "childrenUnder6":
       this.setState({ changedChildrenUnder6: true }); 
       this.props.Parameters.childrenUnder6 = parseInt(event.target.value);
-           if(event.target.value == 0) {
+           if(event.target.value === 0) {
             this.props.Parameters.unnecessaryExpensesChildrenUnder6 = 0;
             this.setState({changedUnnecessaryExpensesChildrenUnder6: false});
           };
@@ -98,7 +98,7 @@ class App extends Component {
       case "childrenOver6":
         this.setState({ changedChildrenOver6: true }); 
         this.props.Parameters.childrenOver6 = parseInt(event.target.value); 
-        if(event.target.value == 0) {
+        if(event.target.value === 0) {
           this.props.Parameters.expensesChildrenOver6StayingRegardless = 0;
           this.props.Parameters.expensesChildrenOver6DependingOnStaying = 0;
           this.setState({changedExpensesChildrenOver6StayingRegardless: false,

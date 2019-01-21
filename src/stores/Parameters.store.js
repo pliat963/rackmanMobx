@@ -217,15 +217,15 @@ class Parameters {
             return this.nessesaryChildUnder6Needs;
     }
     @computed get motherMadorUnder6() {
-        if (this.childrenUnder6 !== 0 || this.childrenOver6 != 0)
+        if (this.childrenUnder6 !== 0 || this.childrenOver6 !== 0)
             return (this.childrenMador / 100) * this.childrenUnder6 / (this.childrenUnder6 + this.childrenOver6) * this.expensesMadorMother;
     }
 
     @computed get motherMadorUnder6FatherPays() {
-        if (this.calcCustodyKind == 0)
+        if (this.calcCustodyKind === 0)
             return 0.5 * this.motherMadorUnder6;
         else
-            if (this.calcCustodyKind == 1)
+            if (this.calcCustodyKind === 1)
                 return this.motherMadorUnder6;
             else
                 return 0;
@@ -357,4 +357,4 @@ class Parameters {
 
 
 }
-export default new Parameters;
+export default new Parameters();

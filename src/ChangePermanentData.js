@@ -92,8 +92,8 @@ class ChangePermanentData extends Component {
                         <br /> <br />
 
 
-                       <button  className="button" onClick={() => this.clickSave()}>  שמור  </button>
-                        <button className="button" onClick={() => this.clickTopic('toTheCalculator')}>למחשבון </button>
+                       <button  className="buttonData" onClick={() => this.clickSave()}>  שמור  </button>
+                        <button className="buttonData" onClick={() => this.clickTopic('toTheCalculator')}>למחשבון </button>
                     </div>
                 </div> 
                 :
