@@ -1,6 +1,24 @@
 .thePage{
     text-align: center;
     direction: rtl; 
+    font-size:3vw;
+}
+.buttonData
+{
+  outline:none;
+  margin-left:2%;
+  height: 40px;
+  text-align: center;
+  width: 130px;
+  border-radius:40px;
+  background: #fff;
+  border: 2px solid #008080;
+  color:#008080;
+  letter-spacing:1px;
+  text-shadow:0;
+  cursor: pointer;
+  transition: all 0.25s ease;
+ 
 }
 input {
     text-align: center;
@@ -12,6 +30,7 @@ input {
     padding: 1px 7px;
 }
 .backgroundTitle{
+margin-bottom: 2%;
     background: #EDEDED;
     margin-top:0;
     height:55%;
@@ -21,6 +40,7 @@ input {
   }
 .cellToFill{
     background-color: #C4C948;
+    padding-right: 2%;
     padding: 0.5%;
     margin:0 20%;
     border-radius:7px;
@@ -30,4 +50,74 @@ input {
     flex-direction: row;
     margin-bottom: 1%;
 }
-
+.buttonforApp{
+    
+}
+@media only screen and (max-width: 600px)  {
+    input {
+        text-align: center;
+        margin-top:8px;
+        width: 30px;
+        height: 15px; 
+      }
+    .nam0fChildren{
+     padding: 1%;
+     padding-left: 4%;
+      margin:0 20%;
+       border-radius:7px;
+       
+        display: flex; 
+        justify-content: space-between;
+        /* flex-direction: row; */
+        margin-bottom: 1%;
+    } 
+    .cellToFill{
+        background-color: #C4C948;
+       
+        padding: 0.5%;
+        margin:0 20%;
+        border-radius:7px;
+        margin-left:10%;
+        margin-right:10%;
+        /* display: flex; */
+        display: flex; 
+        justify-content: space-between;
+        flex-direction: row;
+        margin-bottom: 1%;
+    }
+   
+   
+  
+    .selectBox{
+     width: 50px;
+     height: 20px; 
+    }
+    .inputGreen{
+      margin-top:8px;
+     width: 25px;
+     height: 15px; 
+    }
+   .summary{
+     padding: 1%;
+     
+      margin:3% 20%;
+       border-radius:7px;
+       
+        display: flex; 
+        justify-content: space-between;
+        /* flex-direction: row; */
+        margin-bottom: 1%;
+   
+   }
+  
+     
+     
+   
+   }
+   
+   
+   input[type=number]::-webkit-inner-spin-button, 
+   input[type=number]::-webkit-outer-spin-button { 
+     -webkit-appearance: none; 
+     margin: 0; 
+   }
