@@ -99,7 +99,7 @@ class ChangePermanentData extends Component {
                 :
                 <div>
                 <App/>
-                <button className="button" onClick={() => this.clickTopic('toChangePermanentData')}> בחזרה להגדרת נתונים קבועים </button>
+                <button className="buttonforApp" onClick={() => this.clickTopic('toChangePermanentData')}> בחזרה להגדרת נתונים קבועים </button>
                 </div>
         );
 

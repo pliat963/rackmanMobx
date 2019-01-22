@@ -69,6 +69,7 @@ class App extends Component {
   }
 
   handleChangeSelect = (event) => {
+    this.setState({submit:false});
     let val = parseInt(event.target.value);
     switch (event.target.id) {
       case "CoordinatorParent":
@@ -120,29 +121,29 @@ class App extends Component {
 
         <div className="nam0fChildren">
           <div className="text">ימי שהות מתוך 14</div>
-          <input className="inputFirst" id="stayingMother" type="number" step={0.5} min={0} max={14} value={(!isNaN(this.props.Parameters.stayingMother) &&this.props.Parameters.stayingMother!==undefined) ? this.props.Parameters.stayingMother.toString(): ""} onChange={(event) => this.handleChange(event)} onBlur={(event) => this.makeSoleCustosyAppearOrDisappear(event)} />
+          <input className="inputFirst" id="stayingMother" type="number" step={0.5} min={0} max={14} value={(!isNaN(this.props.Parameters.stayingMother) &&this.props.Parameters.stayingMother!==undefined) ? this.props.Parameters.stayingMother.toString(): (this.state.submit? "0": "")} onChange={(event) => this.handleChange(event)} onBlur={(event) => this.makeSoleCustosyAppearOrDisappear(event)} />
           <input className="inputSecond" id="stayingFather" disabled="disabled" value={this.props.Parameters.stayingFather}  />
         </div>
      
 
         <div className="nam0fChildren">
           <div className="text" >הכנסה נטו</div>
-          <input className="inputFirst noArrows" id="netSalaryMother" type="number" min={0} value={(!isNaN(this.props.Parameters.netSalaryMother)&&this.props.Parameters.netSalaryMother!==undefined)? this.props.Parameters.netSalaryMother.toString(): ""} onChange={(event) => this.handleChange(event)} />
-          <input className="inputSecond noArrows" id="netSalaryFather" type="number" min={0} value={(!isNaN(this.props.Parameters.netSalaryFather)&&this.props.Parameters.netSalaryFather!==undefined)? this.props.Parameters.netSalaryFather.toString(): ""} onChange={(event) => this.handleChange(event)} />
+          <input className="inputFirst noArrows" id="netSalaryMother" type="number" min={0} value={(!isNaN(this.props.Parameters.netSalaryMother)&&this.props.Parameters.netSalaryMother!==undefined)? this.props.Parameters.netSalaryMother.toString(): (this.state.submit? "0": "")} onChange={(event) => this.handleChange(event)} />
+          <input className="inputSecond noArrows" id="netSalaryFather" type="number" min={0} value={(!isNaN(this.props.Parameters.netSalaryFather)&&this.props.Parameters.netSalaryFather!==undefined)? this.props.Parameters.netSalaryFather.toString(): (this.state.submit? "0": "")} onChange={(event) => this.handleChange(event)} />
 
         </div>
 
 
         <div className="nam0fChildren">
           <div className="text"> עלות מדור </div>
-          <input className="inputFirst" id="expensesMadorMother" type="number" min={0} value={(!isNaN(this.props.Parameters.expensesMadorMother)&&this.props.Parameters.expensesMadorMother!==undefined)? this.props.Parameters.expensesMadorMother.toString():""} onChange={(event) => this.handleChange(event)} />
-          <input className="inputSecond" id="expensesMadorFather" type="number" min={0} value={(!isNaN(this.props.Parameters.expensesMadorFather)&&this.props.Parameters.expensesMadorFather!==undefined)? this.props.Parameters.expensesMadorFather.toString():""} onChange={(event) => this.handleChange(event)} />
+          <input className="inputFirst" id="expensesMadorMother" type="number" min={0} value={(!isNaN(this.props.Parameters.expensesMadorMother)&&this.props.Parameters.expensesMadorMother!==undefined)? this.props.Parameters.expensesMadorMother.toString():(this.state.submit? "0": "")} onChange={(event) => this.handleChange(event)} />
+          <input className="inputSecond" id="expensesMadorFather" type="number" min={0} value={(!isNaN(this.props.Parameters.expensesMadorFather)&&this.props.Parameters.expensesMadorFather!==undefined)? this.props.Parameters.expensesMadorFather.toString():(this.state.submit? "0": "")} onChange={(event) => this.handleChange(event)} />
         </div>
 
 
         <div className="nam0fChildren">
           <div className="text"> הורה מרכז</div>
-          <select className="selectBox" id="CoordinatorParent" value={this.state.changedCoordinatorParent ? this.props.Parameters.coordinatorParent : "בחר/י"} onChange={(event) => this.handleChangeSelect(event)}>
+          <select className="selectBox" id="CoordinatorParent" value={this.state.changedCoordinatorParent ? this.props.Parameters.coordinatorParent : (this.state.submit? "mother": "בחר/י")} onChange={(event) => this.handleChangeSelect(event)}>
             <option value="choose" key="choose" hidden > בחר/י </option>
             <option value="mother"> אמא</option>
             <option value="father"> אבא </option>
@@ -153,7 +154,7 @@ class App extends Component {
 
 <div className="nam0fChildrenOver6">
   <div className="text">  מספר ילדים מתחת לגיל 6</div>
-  <select className="selectBox" id="childrenUnder6" value={this.state.changedChildrenUnder6 ? this.props.Parameters.childrenUnder6 : "בחר/י"} onChange={(event) => this.handleChangeSelect(event)}>
+  <select className="selectBox" id="childrenUnder6" value={this.state.changedChildrenUnder6 ? this.props.Parameters.childrenUnder6 : (this.state.submit? "0": "בחר/י")} onChange={(event) => this.handleChangeSelect(event)}>
     <option value="choose" key="choose" hidden > בחר/י </option>
     {this.numberOptions}
   </select>
@@ -161,7 +162,7 @@ class App extends Component {
 
 <div className="nam0fChildrenOver6">
   <div className="text">  מספר ילדים מעל גיל 6   </div>
-  <select className="selectBox" id="childrenOver6" value={this.state.changedChildrenOver6 ? this.props.Parameters.childrenOver6 : "בחר/י"} onChange={(event) => this.handleChangeSelect(event)}>
+  <select className="selectBox" id="childrenOver6" value={this.state.changedChildrenOver6 ? this.props.Parameters.childrenOver6 : (this.state.submit? "0": "בחר/י")} onChange={(event) => this.handleChangeSelect(event)}>
     <option value="choose" key="choose" hidden > בחר/י </option>
     {this.numberOptions}
   </select>
@@ -170,28 +171,28 @@ class App extends Component {
 {this.props.Parameters.childrenOver6 > 0 ?
 <div className="nam0fChildrenOver6BlakGreen">
   <div className="text"> צורכי ילדים מעל גיל 6 - לא תלויי שהות (הולך למרכז) </div>
-  <input className="inputGreen noArrows" id="expensesChildrenOver6StayingRegardless" type="number" min={0} value={(!isNaN(this.props.Parameters.tempExpensesChildrenOver6StayingRegardless)&&this.props.Parameters.tempExpensesChildrenOver6StayingRegardless!==undefined)? this.props.Parameters.tempExpensesChildrenOver6StayingRegardless.toString(): ""} onChange={(event) => this.handleChange(event)} />
+  <input className="inputGreen noArrows" id="expensesChildrenOver6StayingRegardless" type="number" min={0} value={(!isNaN(this.props.Parameters.tempExpensesChildrenOver6StayingRegardless)&&this.props.Parameters.tempExpensesChildrenOver6StayingRegardless!==undefined)? this.props.Parameters.tempExpensesChildrenOver6StayingRegardless.toString():(this.state.submit? "0": "")} onChange={(event) => this.handleChange(event)} />
 </div>
 : ""}
 
 {this.props.Parameters.childrenOver6 > 0 ?
 <div className="nam0fChildrenOver6BlakGreen">
   <div className="text"> צורכי ילדים מעל גיל 6 תלויי שהות </div>
-  <input className="inputGreen" id="expensesChildrenOver6DependingOnStaying" type="number" min={0} value={(!isNaN(this.props.Parameters.tempExpensesChildrenOver6DependingOnStaying)&&this.props.Parameters.tempExpensesChildrenOver6DependingOnStaying!==undefined)? this.props.Parameters.tempExpensesChildrenOver6DependingOnStaying.toString():""} onChange={(event) => this.handleChange(event)} />
+  <input className="inputGreen" id="expensesChildrenOver6DependingOnStaying" type="number" min={0} value={(!isNaN(this.props.Parameters.tempExpensesChildrenOver6DependingOnStaying)&&this.props.Parameters.tempExpensesChildrenOver6DependingOnStaying!==undefined)? this.props.Parameters.tempExpensesChildrenOver6DependingOnStaying.toString():(this.state.submit? "0": "")} onChange={(event) => this.handleChange(event)} />
 </div>
 : ""}
 
 {this.props.Parameters.childrenUnder6 > 0 ?
 <div className="nam0fChildrenOver6BlakGreen">
   <div className="text" > צורכי ילדים מתחת לגיל 6 - לא הכרחיות </div>
-  <input className="inputGreen" id="unnecessaryExpensesChildrenUnder6" type="number" min={0} value={(!isNaN(this.props.Parameters.tempUnnecessaryExpensesChildrenUnder6)&&this.props.Parameters.tempUnnecessaryExpensesChildrenUnder6!==undefined)? this.props.Parameters.tempUnnecessaryExpensesChildrenUnder6.toString():""} onChange={(event) => this.handleChange(event)} />
+  <input className="inputGreen" id="unnecessaryExpensesChildrenUnder6" type="number" min={0} value={(!isNaN(this.props.Parameters.tempUnnecessaryExpensesChildrenUnder6)&&this.props.Parameters.tempUnnecessaryExpensesChildrenUnder6!==undefined)? this.props.Parameters.tempUnnecessaryExpensesChildrenUnder6.toString():(this.state.submit? "0": "")} onChange={(event) => this.handleChange(event)} />
 </div>
 :"" }
 
 {this.state.soleCustody ?
   <div className="nam0fChildrenOver6BlakGreen">
     <div className="text"> עלות משמורן יחיד</div>
-    <input className="inputGreen" id="treatmentSumSoleCustody" type="number" min={0} value={(!isNaN(this.props.Parameters.tempTreatmentSumSoleCustody)&&this.props.Parameters.tempTreatmentSumSoleCustody!==undefined)? this.props.Parameters.tempTreatmentSumSoleCustody.toString():""} onChange={(event) => this.handleChange(event)} />
+    <input className="inputGreen" id="treatmentSumSoleCustody" type="number" min={0} value={(!isNaN(this.props.Parameters.tempTreatmentSumSoleCustody)&&this.props.Parameters.tempTreatmentSumSoleCustody!==undefined)? this.props.Parameters.tempTreatmentSumSoleCustody.toString():(this.state.submit? "0": "")} onChange={(event) => this.handleChange(event)} />
   </div>
   :
   " "
