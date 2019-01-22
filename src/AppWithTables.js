@@ -16,9 +16,9 @@ class AppWithTables extends Component {
 
   handleChange = (event) => {
     let val = parseInt(event.target.value);
-    if (!val) { // val = NaN
-      val = 0;
-    }
+    // if (!val) { // val = NaN
+    //   val = 0;
+    // }
     if (event.target.max) // if max exists
     {
       if (val > event.target.max) {
@@ -38,6 +38,7 @@ class AppWithTables extends Component {
       case "unnecessaryExpensesChildrenUnder6": this.props.Parameters.unnecessaryExpensesChildrenUnder6 = val; break;
       case "treatmentSumSoleCustody": this.props.Parameters.treatmentSumSoleCustody = val; break;
       case "expensesChildrenOver6DependingOnStaying": this.props.Parameters.expensesChildrenOver6DependingOnStaying = val; break;
+      default: break;
     }
   }
 
@@ -161,21 +162,21 @@ class AppWithTables extends Component {
             </tr>
             <tr>
               <td>צורכי ילדים מעל גיל 6 - לא תלוי שהות (הולך למרכז) </td>
-              <td> <input id="expensesChildrenOver6StayingRegardless" type="number" min={0} value={this.props.Parameters.expensesChildrenOver6StayingRegardless} onChange={(event) => this.handleChange(event)} /></td>
+              <td> <input id="expensesChildrenOver6StayingRegardless" type="number" min={0} value={this.props.Parameters.tempExpensesChildrenOver6StayingRegardless} onChange={(event) => this.handleChange(event)} /></td>
               <td> {this.props.Parameters.expensesChildrenOver6StayingRegardlessMother}</td>
               <td> {this.props.Parameters.expensesChildrenOver6StayingRegardlessFather} </td>
               <td>הכנסות</td>
             </tr>
             <tr>
               <td>צורכי ילדים מתחת לגיל 6 - לא הכרחיות </td>
-              <td><input id="unnecessaryExpensesChildrenUnder6" type="number" min={0} value={this.props.Parameters.unnecessaryExpensesChildrenUnder6} onChange={(event) => this.handleChange(event)} /> </td>
+              <td><input id="unnecessaryExpensesChildrenUnder6" type="number" min={0} value={this.props.Parameters.tempUnnecessaryExpensesChildrenUnder6} onChange={(event) => this.handleChange(event)} /> </td>
               <td>{this.props.Parameters.unnecessaryExpensesChildrenUnder6Mother} </td>
               <td>{this.props.Parameters.unnecessaryExpensesChildrenUnder6Father}</td>
               <td>הכנסות</td>
             </tr>
             <tr>
               <td>דמי טיפול Sole Custody  </td>
-              <td> <input id="treatmentSumSoleCustody" type="number" min={0} value={this.props.Parameters.treatmentSumSoleCustody} onChange={(event) => this.handleChange(event)} /></td>
+              <td> <input id="treatmentSumSoleCustody" type="number" min={0} value={this.props.Parameters.tempTreatmentSumSoleCustody} onChange={(event) => this.handleChange(event)} /></td>
               <td> {this.props.Parameters.treatmentSumSoleCustodyMother}</td>
               <td> {this.props.Parameters.treatmentSumSoleCustodyFather} </td>
               <td>משמורן יחיד = מרכז</td>
@@ -205,7 +206,7 @@ class AppWithTables extends Component {
             </tr>
             <tr>
               <td>צרכי ילדים מעל גיל 6 - שהות - מחושב לפי נוסחת וועדת שיפמן </td>
-              <td> <input id="expensesChildrenOver6DependingOnStaying" type="number" min={0} value={this.props.Parameters.expensesChildrenOver6DependingOnStaying} onChange={(event) => this.handleChange(event)} /></td>
+              <td> <input id="expensesChildrenOver6DependingOnStaying" type="number" min={0} value={this.props.Parameters.tempExpensesChildrenOver6DependingOnStaying} onChange={(event) => this.handleChange(event)} /></td>
               <td>{this.props.Parameters.expensesChildrenOver6DependingOnStayingForMother} </td>
               <td>{this.props.Parameters.expensesChildrenOver6DependingOnStayingForFather}</td>
               <td>שיפמן</td>
