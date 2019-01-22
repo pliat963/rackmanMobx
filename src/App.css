@@ -118,17 +118,20 @@ input[type=number]::-webkit-outer-spin-button {
   
  .rowOfInformation{
   padding: 1%;
-  margin:0 20%;
-  border-radius:7px;
-  display: flex; 
-  justify-content: space-between;
+  margin:0% 5%;
   margin-bottom: 1%;
  } 
  .selectBox{
-  width: 50px;
-  height: 20px; 
+  width:10vw;
+  height:5vw;
+  font-size:3vw;
  }
-
+ .inputs{
+  width:10vw;
+  height:5vw;
+  font-size:1.75vw;
+  margin:5px 1.25vw;
+}
 .summary{
   padding: 1%;
   margin:3% 20%;
@@ -138,22 +141,14 @@ input[type=number]::-webkit-outer-spin-button {
   margin-bottom: 1%;
 
 }
-.motherTitle{
-  margin-right:45%;
-  margin-bottom:0%;
-  text-align: right;
-  direction: rtl;
+.titlesForTheTable{
+  margin:0% 5%;
+  font-size:6vw;
+}  
+.text {
+  font-size:6vw;
 }
-.fatherTitle{
-  margin-left:10%;
-  margin-bottom:0%;
-  text-align: right;
-  direction: rtl;
 }
-  
-
-}
-
 
 /* input[type=number]::-webkit-inner-spin-button, 
 input[type=number]::-webkit-outer-spin-button { 
