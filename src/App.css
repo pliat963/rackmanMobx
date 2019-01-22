@@ -48,13 +48,12 @@
   background-color:#435E73;
   padding-right: 40%;
   padding: 0.5%;
-   margin:0% 20%;
-    border-radius:7px;
-    
-     display: flex; 
-     justify-content: space-between;
-     /* flex-direction: row; */
-     margin-bottom: 1%;
+  margin:0% 20%;
+  border-radius:7px;
+  display: flex; 
+  justify-content: space-between;
+  /* flex-direction: row; */
+  margin-bottom: 1%;
     
 }
 .ChildrnNeedN0DepTime  {
@@ -86,9 +85,7 @@
 }
 
 .inputFirst{
-  
   width:20%;
- 
   border-radius: 4px;
   border: 0;
   text-align: right;
@@ -231,7 +228,6 @@ input[type=number]::-webkit-outer-spin-button {
   padding: 1%;
    margin:0 20%;
     border-radius:7px;
-    
      display: flex; 
      justify-content: space-between;
      /* flex-direction: row; */
