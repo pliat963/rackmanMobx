@@ -69,6 +69,7 @@ class App extends Component {
   }
 
   handleChangeSelect = (event) => {
+    this.setState({submit:false});
     let val = parseInt(event.target.value);
     switch (event.target.id) {
       case "CoordinatorParent":
