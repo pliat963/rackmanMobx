@@ -36,9 +36,6 @@ class Parameters {
     @observable tempTreatmentSumSoleCustody;
 
 
-    
-     
-
     @computed get expensesChildrenOver6StayingRegardless() {
         if (this.tempExpensesChildrenOver6StayingRegardless && (this.childrenOver6||0) > 0){
             return this.tempExpensesChildrenOver6StayingRegardless;
@@ -375,8 +372,5 @@ class Parameters {
     }
 
 
-   
-
-
 }
-export default new Parameters();
+export default new Parameters;

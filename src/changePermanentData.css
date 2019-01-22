@@ -20,23 +20,6 @@
   transition: all 0.25s ease;
  
 }
-.buttonData
-{
-  outline:none;
-  margin-left:2%;
-  height: 40px;
-  text-align: center;
-  width: 130px;
-  border-radius:40px;
-  background: #fff;
-  border: 2px solid #008080;
-  color:#008080;
-  letter-spacing:1px;
-  text-shadow:0;
-  cursor: pointer;
-  transition: all 0.25s ease;
- 
-}
 input {
     text-align: center;
     width: 25%;

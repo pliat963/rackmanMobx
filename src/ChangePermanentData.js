@@ -34,9 +34,9 @@ class ChangePermanentData extends Component {
 
     handleChange = (event) => {
         let val = parseInt(event.target.value);
-        if (!val) { // val = NaN
-            val = 0;
-        }
+        // if (!val) { // val = NaN
+        //     val = 0;
+        // }
         if (event.target.max) // if max exists
         {
             if (val > event.target.max) {
