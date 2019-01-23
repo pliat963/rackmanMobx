@@ -78,14 +78,11 @@ input[type=number]::-webkit-outer-spin-button {
   padding-right:5px;
   padding-top:0.1vw;;
   background-color: white; 
-  width:10.5vw;
-  height:2vw;
-  border-radius: 5%;
-  border: 0;
-  font-size:1.5vw;
+  direction: rtl;
 }
 .childrenFirstTwoRows{
   background-color:#93a31c;
+  color:black;
 }
 .dependantRowOfInformation{
   background-color:#6a7511;
@@ -111,8 +108,8 @@ input[type=number]::-webkit-outer-spin-button {
 }
 .summary{
   background-color: rgba(88, 88, 88, 0.534);
+  margin:0;
   margin-top: 10px;
-  margin-bottom: 0px;
   font-size:2vw;
 }
 
@@ -127,7 +124,7 @@ input[type=number]::-webkit-outer-spin-button {
  
 }
 
-@media only screen and (min-width: 750px) and (max-width: 1200px)  {
+@media only screen and (min-width: 650px) and (max-width: 1200px)  {
   .text {
     font-size:2.25vw;
   }
@@ -147,40 +144,31 @@ input[type=number]::-webkit-outer-spin-button {
 .submitButton{
   font-size:2vw;
 }
+.summary{
+  background: #EDEDED;
+}
 
 }
 
 
-@media only screen and (max-width: 750px)  {
+@media only screen and (max-width: 650px)  {
   
  .rowOfInformation{
   padding: 1%;
   margin:0% 5%;
   margin-bottom: 1%;
  } 
- .selectBox{
-  width:10vw;
-  height:5vw;
-  font-size:3vw;
-  margin-left:2%;
- }
  .inputs{
-  width:10vw;
-  height:5vw;
+  width:17vw;
+  height:4vw;
   font-size:1.75vw;
   margin:5px 1.25vw;
-  font-size: 4vw;
-  padding-top:3.5px;
+  font-size: 3.5vw;
+  padding-top:2px;
 }
-.summary{
-  padding: 1%;
-  margin:3% 20%;
-  border-radius:7px;
-  display: flex; 
-  justify-content: space-between;
-  margin-bottom: 1%;
-
-}
+.selectBox{
+  padding-top:0;
+ }
 .titlesForTheTable{
   margin:0% 5%;
   font-size:4vw;
@@ -189,7 +177,7 @@ input[type=number]::-webkit-outer-spin-button {
   margin-right:7.5%;
 }
 .text {
-  font-size:5vw;
+  font-size:4vw;
 }
 .submitButton{
   height: 10vw;
@@ -207,12 +195,11 @@ input[type=number]::-webkit-outer-spin-button {
 }
 .subTitle{
   margin-top:0;
-  font-size:5vw;
+  font-size:4vw;
 }
-
 .section{
   margin-right: 5%;
-  font-size:5vw;  
+  font-size:4vw;  
 }
 .secondSection{
   margin-top:5vw;
@@ -221,8 +208,11 @@ input[type=number]::-webkit-outer-spin-button {
 .rowOfInformation {
   padding: 0.5% 1.5% 0.5% 1%;
 }
-.dependantRowOfInformation{
-  height:13vw;
+.summary{
+  padding: 1%;
+  margin:0;
+  border-radius:7px;
+  background: #EDEDED;
 }
 
 }

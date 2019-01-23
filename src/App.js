@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { observer } from 'mobx-react';
 import './App.css';
-import ChangePermanentData from './ChangePermanentData.js'
 
 //import { observer } from 'mobx';
 
@@ -143,7 +142,7 @@ class App extends Component {
 
         <div className="rowOfInformation">
           <div className="text"> הורה מרכז</div>
-          <select className="selectBox" id="CoordinatorParent" value={this.state.changedCoordinatorParent ? this.props.Parameters.coordinatorParent : (this.state.submit? "mother": "בחר/י")} onChange={(event) => this.handleChangeSelect(event)}>
+          <select className="selectBox inputs" id="CoordinatorParent" value={this.state.changedCoordinatorParent ? this.props.Parameters.coordinatorParent : (this.state.submit? "mother": "בחר/י")} onChange={(event) => this.handleChangeSelect(event)}>
             <option value="choose" key="choose" hidden > בחר/י </option>
             <option value="mother"> אמא</option>
             <option value="father"> אבא </option>
@@ -154,7 +153,7 @@ class App extends Component {
 
 <div className="rowOfInformation childrenFirstTwoRows">
   <div className="text">  מספר ילדים מתחת לגיל 6</div>
-  <select className="selectBox" id="childrenUnder6" value={this.state.changedChildrenUnder6 ? this.props.Parameters.childrenUnder6 : (this.state.submit? "0": "בחר/י")} onChange={(event) => this.handleChangeSelect(event)}>
+  <select className="selectBox inputs" id="childrenUnder6" value={this.state.changedChildrenUnder6 ? this.props.Parameters.childrenUnder6 : (this.state.submit? "0": "בחר/י")} onChange={(event) => this.handleChangeSelect(event)}>
     <option value="choose" key="choose" hidden > בחר/י </option>
     {this.numberOptions}
   </select>
@@ -162,7 +161,7 @@ class App extends Component {
 
 <div className="rowOfInformation childrenFirstTwoRows">
   <div className="text">  מספר ילדים מעל גיל 6   </div>
-  <select className="selectBox" id="childrenOver6" value={this.state.changedChildrenOver6 ? this.props.Parameters.childrenOver6 : (this.state.submit? "0": "בחר/י")} onChange={(event) => this.handleChangeSelect(event)}>
+  <select className="selectBox inputs" id="childrenOver6" value={this.state.changedChildrenOver6 ? this.props.Parameters.childrenOver6 : (this.state.submit? "0": "בחר/י")} onChange={(event) => this.handleChangeSelect(event)}>
     <option value="choose" key="choose" hidden > בחר/י </option>
     {this.numberOptions}
   </select>
