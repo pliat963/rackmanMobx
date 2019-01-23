@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { observer } from 'mobx-react';
 import './App.css';
+import ChangePermanentData from './ChangePermanentData.js'
 
 //import { observer } from 'mobx';
 
@@ -10,6 +11,7 @@ class App extends Component {
     super(props);
     this.state = {
       submit: false,
+      
       soleCustody: false,
        //selects
       changedChildrenUnder6: false,
@@ -94,6 +96,7 @@ class App extends Component {
     }
 
   }
+ 
 
   handleSubmit = (event) => {
     this.setState({ submit: true });

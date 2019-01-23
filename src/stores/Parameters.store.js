@@ -11,12 +11,12 @@ class Parameters {
 
  //for the button that saves permanent data  
 
-    @observable tempNumOfDaysInAYear = 365;
-    @observable tempMinNightsSoThatItIsNotSelfCustody = 2;
-    @observable tempMaxNightDiffForJointCustody = 4;
-    @observable tempMinSumForLivingToThePayer = 4000;
-    @observable tempSumForKidUnder6 = 1300;
-    @observable tempPercentageFromFatherInJointCustody = 40;
+    @observable tempNumOfDaysInAYear = this.numOfDaysInAYear;
+    @observable tempMinNightsSoThatItIsNotSelfCustody = this.minNightsSoThatItIsNotSelfCustody;
+    @observable tempMaxNightDiffForJointCustody = this.maxNightDiffForJointCustody;
+    @observable tempMinSumForLivingToThePayer = this.minSumForLivingToThePayer;
+    @observable tempSumForKidUnder6 = this.sumForKidUnder6;
+    @observable tempPercentageFromFatherInJointCustody = this.percentageFromFatherInJointCustody;
 
 
     //fitst table - parents data

@@ -1,7 +1,6 @@
 .thePage{
     text-align: center;
-    direction: rtl; 
-    font-size:3vw;
+    direction: rtl;  
 }
 .buttonData
 {
@@ -20,6 +19,28 @@
   transition: all 0.25s ease;
  
 }
+.buttonData
+{
+  outline:none;
+  margin-left:2%;
+  height: 40px;
+  text-align: center;
+  width: 130px;
+  border-radius:40px;
+  background: #fff;
+  border: 2px solid #008080;
+  color:#008080;
+  letter-spacing:1px;
+  text-shadow:0;
+  cursor: pointer;
+  transition: all 0.25s ease;
+ 
+}
+.buttonData:hover{
+    color:white;
+    background: #008080;
+  }
+
 input {
     text-align: center;
     width: 25%;
@@ -28,6 +49,7 @@ input {
     border-radius: 7px;
     border: 0;
     padding: 1px 7px;
+   direction:ltr;
 }
 .backgroundTitle{
 margin-bottom: 2%;
@@ -51,15 +73,52 @@ margin-bottom: 2%;
     margin-bottom: 1%;
 }
 .buttonforApp{
-    
+    margin-bottom: 0%;
+    margin-left:2%;
+    height: 40px;
+    text-align: center;
+    width: 130px;
+    border-radius:40px;
+    background: #fff;
+    border: 2px solid #008080;
+    color:#008080;
+    letter-spacing:1px;
+    text-shadow:0;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    margin-top:-100px;
 }
 @media only screen and (max-width: 600px)  {
+    .thePage{
+        text-align: center;
+        direction: rtl; 
+        font-size:3vw;
+    }
     input {
         text-align: center;
         margin-top:8px;
+        margin-bottom: 8px;
         width: 30px;
         height: 15px; 
       }
+      .modolo{
+          margin-right:0%;
+     margin-top:3.4%;     
+      }
+
+      .backgroundTitle{
+            background: #EDEDED;
+            padding-top:2.3%;
+            padding-bottom: 2.3%;
+            margin-bottom: 3%;
+            margin-top:0;
+            height:55%;
+        }
+        .title{
+            margin:0%;
+            
+          }
+
     .nam0fChildren{
      padding: 1%;
      padding-left: 4%;
@@ -83,7 +142,7 @@ margin-bottom: 2%;
         display: flex; 
         justify-content: space-between;
         flex-direction: row;
-        margin-bottom: 1%;
+        margin-bottom:1.7%;
     }
    
    
@@ -120,4 +179,9 @@ margin-bottom: 2%;
    input[type=number]::-webkit-outer-spin-button { 
      -webkit-appearance: none; 
      margin: 0; 
+   }
+
+   .container{
+       text-align:center;
+       padding-top:10px;
    }

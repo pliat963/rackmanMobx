@@ -12,7 +12,7 @@ class ChangePermanentData extends Component {
 
     constructor(props) {
         super(props);
-        this.state = { topic: 'toChangePermanentData' };
+        this.state = { topic: 'toChangePermanentData',successSave:'false',check:true };
         this.clickTopic = this.clickTopic.bind(this);
     }
     clickTopic = (whereToGo) => {
@@ -24,15 +24,20 @@ class ChangePermanentData extends Component {
     }
 
     clickSave = () =>{
-        this.props.Parameters.numOfDaysInAYear = this.props.Parameters.tempNumOfDaysInAYear;
-        this.props.Parameters.minNightsSoThatItIsNotSelfCustody = this.props.Parameters.tempMinNightsSoThatItIsNotSelfCustody;
-        this.props.Parameters.maxNightDiffForJointCustody = this.props.Parameters.tempMaxNightDiffForJointCustody;
-        this.props.Parameters.minSumForLivingToThePayer = this.props.Parameters.tempMinSumForLivingToThePayer;
-        this.props.Parameters.sumForKidUnder6 = this.props.Parameters.tempSumForKidUnder6;
-        this.props.Parameters.percentageFromFatherInJointCustody=this.props.Parameters.tempPercentageFromFatherInJointCustody;
+        this.setState({successSave:true})
+        let shortcut = this.props.Parameters;
+
+        shortcut.tempNumOfDaysInAYear && (shortcut.numOfDaysInAYear = shortcut.tempNumOfDaysInAYear);
+        shortcut.tempMinNightsSoThatItIsNotSelfCustody && (shortcut.minNightsSoThatItIsNotSelfCustody = shortcut.tempMinNightsSoThatItIsNotSelfCustody);
+        shortcut.tempMaxNightDiffForJointCustody && (shortcut.maxNightDiffForJointCustody = shortcut.tempMaxNightDiffForJointCustody);
+        shortcut.tempMinSumForLivingToThePayer && (shortcut.minSumForLivingToThePayer = shortcut.tempMinSumForLivingToThePayer);
+        shortcut.tempSumForKidUnder6 && (shortcut.sumForKidUnder6 = shortcut.tempSumForKidUnder6);
+        shortcut.tempPercentageFromFatherInJointCustody && (shortcut.percentageFromFatherInJointCustody = shortcut.tempPercentageFromFatherInJointCustody);
     }
 
     handleChange = (event) => {
+        this.setState({successSave:false})
+        
         let val = parseInt(event.target.value);
         // if (!val) { // val = NaN
         //     val = 0;
@@ -64,28 +69,29 @@ class ChangePermanentData extends Component {
                     <div className="backgroundTitle"><h1 className="title"> שינוי נתונים קבועים </h1></div>
                     <br></br>
                     <div className="cellToFill"  >
-                        <div >ימים בשנה:</div>
+                        <div >ימים בשנה</div>
                         <input id="numOfDaysInAYear" type="number" min="0" max={370} value={this.props.Parameters.tempNumOfDaysInAYear} onChange={(event) => this.handleChange(event)} />
                     </div>
                     <div className="cellToFill"  >
-                        <div >מינימום לילות שלא תהיה משמורת יחידה:</div>
+                        <div >מינימום לילות שלא תהיה משמורת יחידה</div>
                         <input id="minNightsSoThatItIsNotSelfCustody" type="number" min="0" max={14} value={this.props.Parameters.tempMinNightsSoThatItIsNotSelfCustody} onChange={(event) => this.handleChange(event)} />
                     </div>
                     <div className="cellToFill" >
-                        <div>מספר לילות כדי שתהיה משמורת משותפת:</div>
+                        <div>מספר לילות כדי שתהיה משמורת משותפת</div>
                         <input id="maxNightDiffForJointCustody" type="number" min="0" max={14} value={this.props.Parameters.tempMaxNightDiffForJointCustody} onChange={(event) => this.handleChange(event)} />
                     </div>
 
                     <div className="cellToFill">
-                        <div>  סכום מינימלי למחיה שנשאר להורה המשלם-כולל מדור:</div>
+                        <div>  סכום מינימלי למחיה שנשאר להורה המשלם-כולל מדור</div>
                         <input id="minSumForLivingToThePayer" type="number" min="0" value={this.props.Parameters.tempMinSumForLivingToThePayer} onChange={(event) => this.handleChange(event)} />
                     </div>
                     <div className="cellToFill">
-                        <div>סכום לילד מתחת לגיל 6:</div>
+                        <div>סכום לילד מתחת לגיל 6</div>
                         <input id="sumForKidUnder6" type="number" min="0" value={this.props.Parameters.tempSumForKidUnder6} onChange={(event) => this.handleChange(event)} />
                     </div>
                     <div className="cellToFill">
-                        <div>אחוזי ההורדה מהאב במקרה של משמורת משותפת:</div> %
+                        <div>אחוזי ההורדה מהאב במקרה של משמורת משותפת</div>
+                        <span  className="modolo">%</span> 
                     <input id="percentageFromFatherInJointCustody" type="number" min="0" max={100} value={this.props.Parameters.tempPercentageFromFatherInJointCustody} onChange={(event) => this.handleChange(event)} />
                     </div>
                     <div>
@@ -93,14 +99,20 @@ class ChangePermanentData extends Component {
 
 
                        <button  className="buttonData" onClick={() => this.clickSave()}>  שמור  </button>
+                        
                         <button className="buttonData" onClick={() => this.clickTopic('toTheCalculator')}>למחשבון </button>
+                        {(this.state.successSave===true ? <div>השמירה התבצעה בהצלחה </div> :"")}
                     </div>
                 </div> 
                 :
-                <div>
-                <App/>
-                <button className="buttonforApp" onClick={() => this.clickTopic('toChangePermanentData')}> בחזרה להגדרת נתונים קבועים </button>
+                <div className="container">
+                <button className="buttonData" onClick={() => this.clickTopic('toChangePermanentData')}> בחזרה להגדרת נתונים קבועים </button>
+                <br/><br/>
+                <App   />
+             
+              
                 </div>
+               
         );
 
     }
