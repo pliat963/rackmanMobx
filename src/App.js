@@ -166,28 +166,28 @@ class App extends Component {
 </div>
 
 {this.props.Parameters.childrenOver6 > 0 ?
-<div className="rowOfInformation childrenRowOfInformation">
+  <div className="rowOfInformation dependantRowOfInformation">
+    <div className="text"> צורכי ילדים מעל גיל 6 תלויי שהות </div>
+    <input className="inputs" id="expensesChildrenOver6DependingOnStaying" type="number" min={0} value={(!isNaN(this.props.Parameters.tempExpensesChildrenOver6DependingOnStaying)&&this.props.Parameters.tempExpensesChildrenOver6DependingOnStaying!==undefined)? this.props.Parameters.tempExpensesChildrenOver6DependingOnStaying.toString():(this.state.submit? "0": "")} onChange={(event) => this.handleChange(event)} />
+  </div>
+  : ""}
+  
+{this.props.Parameters.childrenOver6 > 0 ?
+<div className="rowOfInformation dependantRowOfInformation">
   <div className="text"> צורכי ילדים מעל גיל 6 - לא תלויי שהות (הולך למרכז) </div>
   <input className="inputs" id="expensesChildrenOver6StayingRegardless" type="number" min={0} value={(!isNaN(this.props.Parameters.tempExpensesChildrenOver6StayingRegardless)&&this.props.Parameters.tempExpensesChildrenOver6StayingRegardless!==undefined)? this.props.Parameters.tempExpensesChildrenOver6StayingRegardless.toString():(this.state.submit? "0": "")} onChange={(event) => this.handleChange(event)} />
 </div>
 : ""}
 
-{this.props.Parameters.childrenOver6 > 0 ?
-<div className="rowOfInformation childrenRowOfInformation">
-  <div className="text"> צורכי ילדים מעל גיל 6 תלויי שהות </div>
-  <input className="inputs" id="expensesChildrenOver6DependingOnStaying" type="number" min={0} value={(!isNaN(this.props.Parameters.tempExpensesChildrenOver6DependingOnStaying)&&this.props.Parameters.tempExpensesChildrenOver6DependingOnStaying!==undefined)? this.props.Parameters.tempExpensesChildrenOver6DependingOnStaying.toString():(this.state.submit? "0": "")} onChange={(event) => this.handleChange(event)} />
-</div>
-: ""}
-
 {this.props.Parameters.childrenUnder6 > 0 ?
-<div className="rowOfInformation childrenRowOfInformation">
+<div className="rowOfInformation dependantRowOfInformation">
   <div className="text" > צורכי ילדים מתחת לגיל 6 - לא הכרחיות </div>
   <input className="inputs" id="unnecessaryExpensesChildrenUnder6" type="number" min={0} value={(!isNaN(this.props.Parameters.tempUnnecessaryExpensesChildrenUnder6)&&this.props.Parameters.tempUnnecessaryExpensesChildrenUnder6!==undefined)? this.props.Parameters.tempUnnecessaryExpensesChildrenUnder6.toString():(this.state.submit? "0": "")} onChange={(event) => this.handleChange(event)} />
 </div>
 :"" }
 
 {this.state.soleCustody ?
-  <div className="rowOfInformation childrenRowOfInformation">
+  <div className="rowOfInformation dependantRowOfInformation">
     <div className="text"> עלות משמורן יחיד</div>
     <input className="inputs" id="treatmentSumSoleCustody" type="number" min={0} value={(!isNaN(this.props.Parameters.tempTreatmentSumSoleCustody)&&this.props.Parameters.tempTreatmentSumSoleCustody!==undefined)? this.props.Parameters.tempTreatmentSumSoleCustody.toString():(this.state.submit? "0": "")} onChange={(event) => this.handleChange(event)} />
   </div>
