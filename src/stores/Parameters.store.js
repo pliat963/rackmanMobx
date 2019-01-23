@@ -379,4 +379,4 @@ class Parameters {
 
 
 }
-export default new Parameters();
+export default new Parameters;
